@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_28_145504) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_28_153505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.string "kind"
+    t.bigint "player_id", null: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_actions_on_game_id"
+    t.index ["player_id"], name: "index_actions_on_player_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.date "date"
@@ -67,6 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_145504) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "actions", "games"
+  add_foreign_key "actions", "players"
   add_foreign_key "games", "teams"
   add_foreign_key "games", "teams", column: "opponent_team_id"
   add_foreign_key "players", "teams"
