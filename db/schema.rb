@@ -31,8 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_153659) do
     t.string "round"
     t.integer "result"
     t.integer "opponent_result"
-    t.bigint "team_id", null: false
-    t.bigint "opponent_team_id", null: false
+    t.bigint "team_id"
+    t.bigint "opponent_team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["opponent_team_id"], name: "index_games_on_opponent_team_id"
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_153659) do
     t.string "name"
     t.string "category"
     t.string "country"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_teams_on_user_id"
