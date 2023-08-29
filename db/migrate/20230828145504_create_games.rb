@@ -7,12 +7,10 @@ class CreateGames < ActiveRecord::Migration[7.0]
       t.string :round
       t.integer :result
       t.integer :opponent_result
-      t.references :team, null: false
-      t.references :opponent_team, null: false
+      t.references :team, foreign_key: true
+      t.references :opponent_team, foreign_key: { to_table: :teams }
 
       t.timestamps
     end
-    add_foreign_key :games, :teams, column: :team_id
-    add_foreign_key :games, :teams, column: :opponent_team_id
   end
 end
