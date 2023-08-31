@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     resources :players, only: %i[index new create edit update]
   end
 
-  # resources :players, except: %i[new create]
+  resources :players, except: %i[new create]
 end
