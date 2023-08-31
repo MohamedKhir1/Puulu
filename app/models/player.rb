@@ -7,5 +7,6 @@ class Player < ApplicationRecord
   # accepts_nested_attributes_for :team, :update_only => true
 
   # has_one_attached :photo
-  validates :name, presence: true
+
+  validates :name, :birthdate, :gender, :position, presence: true
 end
