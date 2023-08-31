@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :teams do
-    resources :players, only: %i[index]
+    resources :players, only: %i[index new create edit update]
   end
+
+  resources :players, except: %i[new create]
 end
