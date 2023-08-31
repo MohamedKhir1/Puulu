@@ -13,15 +13,15 @@
     </div>
 
     <div class="col-sm-4">
-      <%= f.input :gender, collection: [['Female'], ['Male']] %>
+      <%= f.input :gender, collection: ['Female', 'Male'] %>
     </div>
 
     <div class="col-sm-4">
-      <%= f.input :handedness, collection: [['Ambidexterity'], ['Left-Handed'], ['Right-Handed']] %>
+      <%= f.input :handedness, collection: ['Ambidexterity', 'Left-Handed', 'Right-Handed'] %>
     </div>
 
     <div class="col-sm-4">
-      <%= f.input :position, collection: [['Field Player'], ['Goalkeeper']] %>
+      <%= f.input :position, collection: ['Field Player', 'Goalkeeper'] %>
     </div>
 
     <div class="col-sm-6">
