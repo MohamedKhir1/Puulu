@@ -15,7 +15,9 @@ class Game < ApplicationRecord
     opponent_team = Team.create!(name: 'Opponent')
 
     13.times do
-      Player.create(name: 'Opponent', team: opponent_team)
+      # validates :name, :birthdate, :gender, :position, presence: true
+      Player.create(name: 'Opponent', birthdate: rand(1900..2005), gender: 'Male',
+                    position: 'Field Player', team: opponent_team)
     end
 
     self.opponent_team = opponent_team

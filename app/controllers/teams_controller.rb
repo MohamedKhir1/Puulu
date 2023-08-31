@@ -27,7 +27,11 @@ class TeamsController < ApplicationController
   end
 
   def update
-
+    if @team.update(team_params)
+      redirect_to team_path(@team), notice: 'Team was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -42,10 +46,10 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(
-      :name, :category, :country, players_attributes: [
-        :name, :nationality, :gender, :description, :birthdate, :position, :handedness, :photo, :available, :_destroy
-      ]
+    params.require(:team).permit(:name, :category, :country, players_attributes: [
+                                 :name, :nationality, :gender, :description, :birthdate,
+                                 :position, :handedness, :photo, :available, :_destroy
+    ]
     )
   end
 end
