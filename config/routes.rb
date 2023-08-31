@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   end
 
   resources :players, except: %i[new create]
+  resources :games, only: %i[new create show]
 end

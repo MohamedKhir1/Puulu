@@ -12,7 +12,7 @@ class Game < ApplicationRecord
   private
 
   def set_opponent_team
-    opponent_team = Team.create!(name: 'Opponent')
+    opponent_team = Team.create!(name: generate_opponent_team_name)
 
     13.times do
       # validates :name, :birthdate, :gender, :position, presence: true
@@ -22,5 +22,9 @@ class Game < ApplicationRecord
 
     self.opponent_team = opponent_team
     save!
+  end
+
+  def generate_opponent_team_name
+    "opponent-#{SecureRandom.hex(5)}"
   end
 end
