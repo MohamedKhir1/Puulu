@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  get '/dashboard' => 'dashboards#show', as: :dashboard
+
   resources :teams do
-    resources :players, only: %i[index]
+    resources :players, only: %i[index new create edit update]
   end
+
+  # resources :players, except: %i[new create]
 end
