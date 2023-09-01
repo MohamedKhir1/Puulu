@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboards#show', as: :dashboard
 
   resources :teams do
-    resources :players, only: %i[index new create edit update]
+    resources :players, only: %i[index new create]
   end
 
   resources :players, except: %i[new create]
