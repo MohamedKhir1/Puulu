@@ -5,13 +5,14 @@
     <%= f.input :nationality %>
     <%= f.input :birthdate, start_year: Time.now.year - 123, end_year: Time.now.year - 18, order: %i(year) %>
     <%= f.input :gender, collection: ['Female', 'Male'] %>
-    <%= f.input :handedness, collection: ['Ambidexterity', 'Left-Handed', 'Right-Handed'] %>
+    <%= f.input :handedness, collection: ['Left-Handed', 'Right-Handed'] %>
     <%= f.input :position, collection: ['Field Player', 'Goalkeeper'] %>
-    <%= f.input :description, as: :text, :input_html => { 'rows' => 1 } %>
-    <%= f.input :photo, as: :file %>
+    <%# <%= f.input :description, as: :text, :input_html => { 'rows' => 1 } %>
+    <%# <%= f.input :photo, as: :file %>
     <%= f.input :available %>
 
-    <%= f.submit "Update Player", class: 'btn btn-primary' %>
+<h1>oi</h1>
+    <%= f.submit "Update Player", class: 'btn' %>
     <% end %>
   </div>
 </div>
