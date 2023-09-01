@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="">
+      <div class="row">
+      <div class="col-6 col-md-4">
+        <div class="">
+        <h1> <%= @player.name %> </h1>
+        <h3>Description:</h3>
+        <p><%= @player.description %></p>
+        <p><b>Location</b> : <%= @player.nationality %></p>
+        <p><b>Status</b> : <% if @player.available %> Available </p>
+          <% else %>
+            Not available
+          <% end %>
+
+          <!-- If I am the owner, display the link-->
+          <!-- otherwise, don't -->
+          <% if current_user == @player.team.user %>
+            <%= link_to "Edit information", edit_player_path(@player), class: 'btn btn-primary' %>
+            <%= link_to "Delete", player_path(@player), class: 'btn btn-primary',
+            data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+          <% else %>
+            <!-- nothing -->
+          <% end %>
+        </div>
+      </div>
+        <div class="col-6 col-md-8">
+            <%# <%= cl_image_tag @player.avatar.key, class:"player-photo" %>
+        </div>
+        </div>
+    </div>
+        <div class ="">
+          <%= link_to "Display all Players", players_path, class: 'btn btn-primary mt-1' %>
+        </div>
+    </div>
+  </div>
+
+
+  </div>
