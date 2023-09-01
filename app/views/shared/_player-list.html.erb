@@ -1,0 +1,36 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Position</th>
+      <th scope="col">handedness</th>
+      <th scope="col">Year</th>
+      <th scope="col">nationality</th>
+      <th scope="col">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% 10.times do %>
+    <tr>
+      <td>DUBOIS Clement</td>
+      <td class="ps-4">GK</td>
+      <td class="ps-4">right</td>
+      <td>1995</td>
+      <td>
+        <span class="d-flex gap-2">
+          <span class="flag__player">
+            <img class="w-100" src="https://resources.premierleague.com/premierleague/flags/FR@x2.png">
+          </span>
+          <span>France</span>
+        </span>
+      </td>
+      <td class="ps-4">
+        <%= link_to "#" do %>
+          <i class="fa-solid fa-arrow-right" style="color: var(--bs-primary);"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
