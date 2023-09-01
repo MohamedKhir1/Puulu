@@ -13,3 +13,29 @@
   <% end %>
 
 </div>
+
+
+<% @players.each do | player| %>
+                <tr>
+                <td><%= player.name %></td>
+                <td class="ps-4">GK</td>
+                <td class="ps-4">right</td>
+                <td>1995</td>
+                <td>
+                  <div class="d-flex gap-2">
+                    <span class="flag__player">
+                      <img class="w-100" src="https://resources.premierleague.com/premierleague/flags/FR@x2.png">
+                    </span>
+                    <span>France</span>
+                  </div>
+                </td>
+
+                <td class="ps-4">
+                  <%= link_to "#" do %>
+                    <i class="fa-solid fa-arrow-right" style="color: var(--bs-primary);"></i>
+                  <% end %>
+                </td>
+              </tr>
+
+
+              <% end %>
