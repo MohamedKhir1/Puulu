@@ -4,7 +4,8 @@ class DashboardsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:home]
 
   def show
-    @teams = Team.where(user_id: current_user).order(:name)
+    @team = Team.find_by(user_id: current_user)
+    # @teams = Team.where(user_id: current_user).order(:name)
     @user = User.find(current_user.id)
     @teams = current_user.teams
   end

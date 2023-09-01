@@ -1,8 +1,8 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: %i[ show edit update destroy ]
+  before_action :set_player, only: %i[show edit update destroy]
 
   def index
-    @players = Player.all
+    @teams = current_user.teams
   end
 
   def show
@@ -17,15 +17,15 @@ class PlayersController < ApplicationController
   end
 
   def new
+    @team = Team.find(params[:team_id])
     @player = Player.new
   end
 
   def create
     @player = Player.new(player_params)
     # the user, who creates the player is the owner of that player:
-    @player.team.user = current_user
     if @player.save
-      redirect_to player_path(@player), notice: 'Player was successfully added.'
+      redirect_to team_players_path(@player.team), notice: 'Player was successfully added.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class PlayersController < ApplicationController
 
   def destroy
     @player.destroy
-    redirect_to players_path, status: :see_other, notice: 'Player was successfully deleted.'
+    redirect_to team_players_path(@player.team), status: :see_other, notice: 'Player was successfully deleted.'
   end
 
   private
@@ -44,6 +44,7 @@ class PlayersController < ApplicationController
 
   def player_params
     params.require(:player).permit(:name, :nationality, :gender, :description,
-                                  :position, :handedness, :available, :birthdate)
+                                   :position, :handedness, :available, :birthdate,
+                                   :team_id)
   end
 end
