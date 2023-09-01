@@ -12,7 +12,7 @@ Team.destroy_all
 Player.destroy_all
 
 puts "Creating user..."
-user1 = User.create!({ email: "test@test.com", password: "123456", name: "Le Wagon Water Polo Club" })
+user1 = User.create!({ email: "test@test.com", password: "123456", name: "Cercle des Nageurs de Marseille" })
 
 puts "Creating team..."
 team1 = Team.create!({ name: "Équipe de France", category: "Senior", country: "France", user: user1 })
