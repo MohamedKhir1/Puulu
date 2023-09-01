@@ -12,14 +12,14 @@ Team.destroy_all
 Player.destroy_all
 
 puts "Creating user..."
-user1 = User.create!({ email: "test@test.com", password: "123456", name: "Test" })
+user1 = User.create!({ email: "test@test.com", password: "123456", name: "Le Wagon Water Polo Club" })
 
 puts "Creating team..."
 team1 = Team.create!({ name: "Équipe de France", category: "Senior", country: "France", user: user1 })
 
 puts "Creating players..."
 player1 = Player.create!({ name: "Clément DUBOIS", nationality: "French", gender: "Male",
-                           birthdate: "1995".to_i, position: "Goalkeeper", handedness: "Ambidexterity",
+                           birthdate: "1995".to_i, position: "Goalkeeper", handedness: "Right-Handed",
                            available: true, team: team1 })
 
 player2 = Player.create!({ name: "Rémi SAUDADIER", nationality: "French", gender: "Male",
@@ -67,7 +67,7 @@ player12 = Player.create!({ name: "Andrea DE NARDI", nationality: "French", gend
                             available: true, team: team1 })
 
 player13 = Player.create!({ name: "Hugo FONTANI", nationality: "French", gender: "Male",
-                            birthdate: "1994", position: "Goalkeeper", handedness: "Ambidexterity",
+                            birthdate: "1994", position: "Goalkeeper", handedness: "Right-Handed",
                             available: true, team: team1 })
 
 puts "Finished!"
