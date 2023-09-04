@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :players, except: %i[new create]
-  resources :games, only: %i[new create show]
+  resources :games, only: %i[new create show] do
+    resources :player_actions, only: %i[create]
+  end
 end

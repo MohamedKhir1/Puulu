@@ -33,10 +33,6 @@ player1 = Player.create!({ name: "Clément DUBOIS", nationality: "French", gende
                            birthdate: "1995".to_i, position: "Goalkeeper", handedness: "Right-Handed",
                            available: true, team: team1 })
 
-player2 = Player.create!({ name: "Rémi SAUDADIER", nationality: "French", gender: "Male",
-                           birthdate: "1986", position: "Field Player", handedness: "Right-Handed",
-                           available: true, team: team1 })
-
 player3 = Player.create!({ name: "Ugo CROUSILLAT", nationality: "French", gender: "Male",
                            birthdate: "1990", position: "Field Player", handedness: "Right-Handed",
                            available: true, team: team1 })
