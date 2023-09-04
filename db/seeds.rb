@@ -85,12 +85,14 @@ puts "seed game"
 current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 10, opponent_result: 7, team: team1)
 
 puts 'seed actions'
-Action.create!({ kind: "Starting Goalkeeper", time: 1, game: current_game, player: current_game.team.players.sample })
-Action.create!({ kind: "Starting Goalkeeper", time: 1, game: current_game, player: current_game.opponent_team.players.sample })
-Action.create!({ kind: "Sprint won possession", time: 1, game: current_game, player: current_game.team.players.sample })
+Action.create!({ kind: "Starting Goalkeeper", time: "08:00", game: current_game, player: current_game.team.players.sample })
+Action.create!({ kind: "Starting Goalkeeper", time: "08:00", game: current_game, player: current_game.opponent_team.players.sample })
+Action.create!({ kind: "Sprint won possession", time: "08:00", game: current_game, player: current_game.team.players.sample })
 
-34.times do
- Action.create!({kind: Action::TYPE_OF_ACTIONS.sample, time: rand(1..32), game: current_game , player: current_game.team.players.sample})
+timings = ["7:38", "7:23", "7:23", "6:59", "6:37", "6:21", "6:02", "5:50", "5:36", "5:28", "5:11", "4:48", "4:43", "4:26", "4:14", "4:01", "3:51", "3:33", "3:18", "2:58", "2:37", "2:17", "1:47", "1:24", "1:06", "0:53", "0:39", "0:19", "0:02"]
+
+timings.each do |time|
+ Action.create!({kind: Action::TYPE_OF_ACTIONS.sample, time: time, game: current_game , player: current_game.players.sample})
 end
 
 puts "DB seeded"
