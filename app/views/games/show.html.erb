@@ -11,7 +11,7 @@
     <%= f.input :player_id, as: :radio_buttons,label: '',   collection: @players + @opponents %>
     <%#= f.input :player_id, as: :radio_buttons, collection: @opponents %>
 
-    <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::KIND %>
+    <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::TYPE_OF_ACTIONS %>
     <%= f.input :position, as: :radio_buttons, collection: PlayerAction::POSITION %>
 
     <%= f.input :result, as: :radio_buttons, collection: PlayerAction::RESULT %>
