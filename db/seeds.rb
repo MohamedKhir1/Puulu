@@ -7,15 +7,26 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Cleaning database..."
+puts "Destroy participations"
+Participation.destroy_all
+puts "Destroy users"
 User.destroy_all
+puts "Destroy games"
+Game.destroy_all
+puts "Destroy teams"
 Team.destroy_all
+puts "Destroy players"
 Player.destroy_all
+puts "Destroy actions"
+Action.destroy_all
 
-puts "Creating user..."
+puts "Creating users..."
 user1 = User.create!({ email: "test@test.com", password: "123456", name: "Cercle des Nageurs de Marseille" })
+user2 = User.create!({ email: "opponent@test.com", password: "123456", name: "Cercle des Nageurs de Pas France" })
 
-puts "Creating team..."
+puts "Creating teams..."
 team1 = Team.create!({ name: "Équipe de France", category: "Senior", country: "France", user: user1 })
+team2 = Team.create!({ name: "Équipe de Pas France", category: "Senior", country: "Pas France", user: user2 })
 
 puts "Creating players..."
 player1 = Player.create!({ name: "Clément DUBOIS", nationality: "French", gender: "Male",
@@ -70,4 +81,16 @@ player13 = Player.create!({ name: "Hugo FONTANI", nationality: "French", gender:
                             birthdate: "1994", position: "Goalkeeper", handedness: "Right-Handed",
                             available: true, team: team1 })
 
-puts "Finished!"
+puts "seed game"
+current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 10, opponent_result: 7, team: team1)
+
+puts 'seed actions'
+Action.create!({ kind: "Starting Goalkeeper", time: 1, game: current_game, player: current_game.team.players.sample })
+Action.create!({ kind: "Starting Goalkeeper", time: 1, game: current_game, player: current_game.opponent_team.players.sample })
+Action.create!({ kind: "Sprint won possession", time: 1, game: current_game, player: current_game.team.players.sample })
+
+34.times do
+ Action.create!({kind: Action::TYPE_OF_ACTIONS.sample, time: rand(1..32), game: current_game , player: current_game.team.players.sample})
+end
+
+puts "DB seeded"
