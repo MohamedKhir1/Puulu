@@ -2,10 +2,10 @@ class Game < ApplicationRecord
   belongs_to :team, class_name: 'Team'
   belongs_to :opponent_team, class_name: 'Team', foreign_key: 'opponent_team_id', optional: true
 
-  has_many :player_actions
-  has_many :participations
+  has_many :player_actions, dependent: :destroy
+  has_many :participations, dependent: :destroy
 
-  before_commit :set_opponent_team
+  after_create :set_opponent_team
 
   validates :date, :location, presence: true
 
