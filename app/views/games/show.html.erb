@@ -37,8 +37,8 @@
   <tbody>
 <% @player_actions.each do |action| %>
     <tr>
-      <% if action.position == 'C2M' && action.kind == 'shot' %>
-        <td><%= 'Centre shot' %> - <%= action.result %></td>
+      <% if (action.kind == 'shot' && action.position == 'C2M') %>
+        <td><%= 'Centre shot'%> - <%= action.result %></td>
       <%end %>
 
       <td><%= action.position %> - <%= action.result %></td>

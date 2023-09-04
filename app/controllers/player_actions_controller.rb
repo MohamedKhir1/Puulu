@@ -4,13 +4,11 @@ class PlayerActionsController < ApplicationController
     @player_action = PlayerAction.new(player_action_params)
     @team = @game.team
     @players = @team.players
-    @player = @players.find(params[:player_id])
 
     @opponent_team = @game.opponent_team
     @opponents = @opponent_team.players
 
     @player_action.game = @game
-
     @player_action.save!
   end
 
