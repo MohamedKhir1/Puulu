@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_100052) do
     t.datetime "updated_at", null: false
     t.string "position"
     t.string "result"
+    t.time "time"
     t.index ["game_id"], name: "index_player_actions_on_game_id"
     t.index ["player_id"], name: "index_player_actions_on_player_id"
   end
