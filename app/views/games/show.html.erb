@@ -6,19 +6,46 @@
 
 <div class="container">
   <%= simple_form_for [@game, @player_action] do |f| %>
-    <%= f.input :player_id, as: :radio_buttons, collection: @players + @opponents %>
+
+  <div class="form-inputs">
+    <%= f.input :player_id, as: :radio_buttons,label: '',   collection: @players + @opponents %>
     <%#= f.input :player_id, as: :radio_buttons, collection: @opponents %>
 
     <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::KIND %>
     <%= f.input :position, as: :radio_buttons, collection: PlayerAction::POSITION %>
 
     <%= f.input :result, as: :radio_buttons, collection: PlayerAction::RESULT %>
-
+  </div>
     <%= f.submit 'End Game' %>
+
   <% end %>
 </div>
 
 
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Action</th>
+      <th scope="col">Score</th>
+      <th scope="col">Cap</th>
+      <th scope="col">Player</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @player_actions.each do |action| %>
-<p><%= action %></p>
-<% end %>
+    <tr>
+      <% if action.position == 'C2M' && action.kind == 'shot' %>
+        <td><%= 'Centre shot' %> - <%= action.result %></td>
+      <%end %>
+
+      <td><%= action.position %> - <%= action.result %></td>
+      <td>0 x 0</td>
+      <td>#</td>
+      <td><%= action.player.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
