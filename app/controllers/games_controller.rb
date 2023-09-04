@@ -28,6 +28,9 @@ class GamesController < ApplicationController
     @opponents = @opponent_team.players
 
     @player_actions = PlayerAction.all
+
+    @team_result = @game.result
+    @opponent_result = @game.opponent_result
   end
 
   private

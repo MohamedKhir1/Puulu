@@ -35,14 +35,18 @@
     </tr>
   </thead>
   <tbody>
+
+
 <% @player_actions.each do |action| %>
     <tr>
       <% if (action.kind == 'shot' && action.position == 'C2M') %>
         <td><%= 'Centre shot'%> - <%= action.result %></td>
+      <% elsif %>
+        <td> <%= 'Action shot' %> - <%= action.result %></td>
       <%end %>
 
-      <td><%= action.position %> - <%= action.result %></td>
-      <td>0 x 0</td>
+         <td><%= @game_result %> x <%= @opponent_result %></td>
+
       <td>#</td>
       <td><%= action.player.name %></td>
     </tr>
