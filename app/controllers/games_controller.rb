@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: %i[show] # edit update destroy
 
   def show
+    @player = Player.find(params[:id])
   end
 
   def new
