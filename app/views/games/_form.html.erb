@@ -2,11 +2,23 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
+        <div class="">
+          <%= f.input :player_id, collection: @game.team.players, as: :radio_buttons,
+                      legend_tag: false, item_label_class: 'btn btn-outline-secondary',
+                      input_html: {hidden: true, class: "btn-check"}, wrapper_html: {class: "w-100"} %>
+        </div>
+      </div>
 
-      <div class="">
-        <%= f.input :player_id, collection: @game.team.players, as: :radio_buttons,
-                    legend_tag: false, item_label_class: 'btn btn-outline-secondary',
-                    input_html: {hidden: true, class: "btn-check"}, wrapper_html: {class: "w-auto"} %>
+      <div class="col-md-8">
+        <h6>TEST</h6>
+      </div>
+
+      <div class="col-md-2 me-auto">
+        <div class="">
+          <%= f.input :player_id, collection: @game.team.players, as: :radio_buttons,
+                      legend_tag: false, item_label_class: 'btn btn-outline-secondary',
+                      input_html: {hidden: true, class: "btn-check"}, wrapper_html: {class: "w-100"} %>
+        </div>
       </div>
 
       </div>
