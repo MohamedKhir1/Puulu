@@ -17,8 +17,6 @@ class GamesController < ApplicationController
   end
 
   def show
-    @player = Player.find(params[:id])
-
     @player_action = PlayerAction.new
     @game = Game.find(params[:id])
 

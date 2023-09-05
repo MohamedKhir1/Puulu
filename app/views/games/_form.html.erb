@@ -1,30 +1,91 @@
-﻿<%= simple_form_for :player_action do |f| %>
+﻿<%= simple_form_for [@game, @player_action] do |f| %>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
-        <div class="">
-          <%= f.input :player_id, collection: @game.team.players, as: :radio_buttons,
-                      legend_tag: false, item_label_class: 'btn btn-outline-secondary',
-                      input_html: {hidden: true, class: "btn-check"}, wrapper_html: {class: "w-100"} %>
+        <div class="row">
+          <%= f.input :player_id,
+                      as: :radio_buttons,
+                      legend_tag: false,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'players-wrapper',
+                      item_wrapper_class: 'players-item',
+                      input_html: { class: 'players-selector' },
+                      collection: @players %>
         </div>
       </div>
 
       <div class="col-md-8">
-        <h6>TEST</h6>
-      </div>
+        <div class="row">
+        <h3 class="d-flex justify-content-center">INPUTS</h3>
+          <%# <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::TYPE_OF_ACTIONS %>
+        </div>
 
-      <div class="col-md-2 me-auto">
-        <div class="">
-          <%= f.input :player_id, collection: @game.team.players, as: :radio_buttons,
-                      legend_tag: false, item_label_class: 'btn btn-outline-secondary',
-                      input_html: {hidden: true, class: "btn-check"}, wrapper_html: {class: "w-100"} %>
+        <div class="row">
+          <%= f.input :position,
+                      as: :radio_buttons,
+                      legend_tag: false,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'position-wrapper',
+                      item_wrapper_class: 'position-item',
+                      input_html: { class: 'position-selector' },
+                      # label_method: lambda { |position| render "games/position", position: position },
+                      collection: PlayerAction::POSITION %>
         </div>
       </div>
 
+      <div class="col-md-2">
+        <div class="row">
+          <%= f.input :player_id,
+                      as: :radio_buttons,
+                      legend_tag: false,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'opponents-wrapper',
+                      item_wrapper_class: 'opponents-item',
+                      input_html: { class: 'opponents-selector' },
+                      collection: @opponents %>
+        </div>
       </div>
+
     </div>
   </div>
+
+
+
+    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::RESULT %>
+
+    <%= f.submit 'End Game' %>
+
+
+
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
 <% end %>
+
 
 
 

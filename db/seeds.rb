@@ -18,7 +18,7 @@ Team.destroy_all
 puts "Destroy players"
 Player.destroy_all
 puts "Destroy actions"
-Action.destroy_all
+PlayerAction.destroy_all
 
 puts "Creating users..."
 user1 = User.create!({ email: "test@test.com", password: "123456", name: "Cercle des Nageurs de Marseille" })
@@ -81,12 +81,12 @@ puts "seed game"
 current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 10, opponent_result: 7, team: team1)
 
 puts 'seed actions'
-Action.create!({ kind: "Starting Goalkeeper", time: 1, game: current_game, player: current_game.team.players.sample })
-Action.create!({ kind: "Starting Goalkeeper", time: 1, game: current_game, player: current_game.opponent_team.players.sample })
-Action.create!({ kind: "Sprint won possession", time: 1, game: current_game, player: current_game.team.players.sample })
+PlayerAction.create!({ kind: "Starting Goalkeeper", time: 1, game: current_game, player: current_game.team.players.sample })
+PlayerAction.create!({ kind: "Starting Goalkeeper", time: 1, game: current_game, player: current_game.opponent_team.players.sample })
+PlayerAction.create!({ kind: "Sprint won possession", time: 1, game: current_game, player: current_game.team.players.sample })
 
 34.times do
- Action.create!({kind: Action::TYPE_OF_ACTIONS.sample, time: rand(1..32), game: current_game , player: current_game.team.players.sample})
+ PlayerAction.create!({kind: PlayerAction::TYPE_OF_ACTIONS.sample, time: rand(1..32), game: current_game , player: current_game.team.players.sample})
 end
 
 puts "DB seeded"

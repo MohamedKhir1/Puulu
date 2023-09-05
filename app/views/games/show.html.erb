@@ -1,33 +1,15 @@
-
-﻿<%# <%= image_tag "IMG_20160424_161815204_HDR.jpg", class:"player-photo" %>
-
-<%= render "games/form", game: @game %>
-
-﻿<%= @game.team.name %>
-<%= @game.date %>
-<%= @game.tournament %>
-<%= @game.location %>
-
-
-<div class="container">
-  <%= simple_form_for [@game, @player_action] do |f| %>
-
-  <div class="form-inputs">
-    <%= f.input :player_id, as: :radio_buttons,label: '',   collection: @players + @opponents %>
-    <%#= f.input :player_id, as: :radio_buttons, collection: @opponents %>
-
-    <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::TYPE_OF_ACTIONS %>
-    <%= f.input :position, as: :radio_buttons, collection: PlayerAction::POSITION %>
-
-    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::RESULT %>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <%= @game.team.name %>
+    <%= @game.date %>
+    <%= @game.tournament %>
+    <%= @game.location %>
   </div>
-    <%= f.submit 'End Game' %>
-
-  <% end %>
 </div>
 
-
-
+<div class="row">
+  <%= render "games/form", game: @game %>
+</div>
 
 
 <table class="table">
