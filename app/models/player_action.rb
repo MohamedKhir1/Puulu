@@ -2,14 +2,20 @@ class PlayerAction < ApplicationRecord
   belongs_to :player
   belongs_to :game
 
-  POSITION = ['L2M', 'C2M', 'R2M', 'BACK LEFT', 'BACK CENTER', 'BACK RIGHT', 'F6M']
-  RESULT = ['post', 'saved', 'goal', 'missed', 'blocked', 'corner']
-  TYPE_OF_ACTIONS = ["Action shot", "Center shot", "Turnover foul",
-                     "Steal", "Goal", "6M Direct shot in free throw",
-                     "Extra player shot", "Counter attack", "Turnover
-                     foul", "Penalty foul", "Steal", "Field exclusion",
-                     "Center forward position exclusion", "Penalty exclusion",
-                     "Double exclusion", "Counter attack situation exclusion",
-                     "Exclusion in 6M free throw situation", "Rebound",
-                     "Timeout", "Substitution goalkeeper", "Technical fault"]
+  TYPE_OF_ACTIONS =  ['Shot', 'Turnover foul', 'Steal', '6M Direct shot in free throw',
+                      'Extra player shot', 'Counter attack', 'Penalty foul', 'Exclusion',
+                      'Double exclusion', 'Rebound']
+
+  POSITIONS = ['L2M', 'C2M', 'R2M', 'BACK LEFT', 'BACK CENTER', 'BACK RIGHT', 'F6M']
+
+  # 6M Direct shot in free throw
+  # Shot
+  # Extra player shot
+  # Counter attack
+  SHOT_RESULTS = ['Post', 'Saved', 'Goal', 'Missed', 'Blocked', 'Corner']
 end
+
+# need to belong to the team
+# "Timeout",
+# "Substitution goalkeeper"
+# 'Technical fault'

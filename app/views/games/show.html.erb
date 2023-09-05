@@ -23,20 +23,28 @@
   </thead>
   <tbody>
 
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Action</th>
+        <th scope="col">Score</th>
+        <th scope="col">Cap</th>
+        <th scope="col">Player</th>
+      </tr>
+    </thead>
 
-<% @player_actions.each do |action| %>
-    <tr>
-      <% if (action.kind == 'shot' && action.position == 'C2M') %>
-        <td><%= 'Centre shot'%> - <%= action.result %></td>
-      <% elsif %>
-        <td> <%= 'Action shot' %> - <%= action.result %></td>
-      <%end %>
+    <tbody>
+      <% @player_actions.each do |player_action| %>
+        <tr>
+          <%= render "game_messages", player_action: player_action %>
+          <td>0 x 0</td>
+          <td>Cap#</td>
+          <td><%= player_action.player.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-         <td><%= @game_result %> x <%= @opponent_result %></td>
-
-      <td>#</td>
-      <td><%= action.player.name %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= link_to "Download PDF", pdf_game_path(@game, format: :pdf) %>
