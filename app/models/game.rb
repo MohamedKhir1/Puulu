@@ -9,6 +9,10 @@ class Game < ApplicationRecord
 
   validates :date, :location, presence: true
 
+  def players
+    Player.where(team_id: [team_id, opponent_team_id])
+  end
+
   private
 
   def set_opponent_team

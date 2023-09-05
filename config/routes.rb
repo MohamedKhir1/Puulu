@@ -14,6 +14,10 @@ Rails.application.routes.draw do
 
   resources :players, except: %i[new create]
   resources :games, only: %i[new create show] do
+    member do
+      get 'pdf', to: 'games#pdf'
+    end
+
     resources :player_actions, only: %i[create]
   end
 end

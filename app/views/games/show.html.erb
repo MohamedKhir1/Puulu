@@ -1,4 +1,4 @@
-﻿<%= @game.team.name %>
+<%= @game.team.name %>
 <%= @game.date %>
 <%= @game.tournament %>
 <%= @game.location %>
@@ -41,3 +41,9 @@
     </tbody>
   </table>
 </div>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "Download PDF", pdf_game_path(@game, format: :pdf) %>
