@@ -1,3 +1,18 @@
+<%= form_with url: root_path, method: :get, html: {class:
+          "mb-3", data: {search_players_target: "form"}} do |f| %>
+            <div class="form-inputs">
+              <%= f.select :two, [['Option 1',1],['Option 2',2]], class:%>
+
+              <%= f.text_field :query,
+                                class: "form-inputs",
+                                placeholder: "Search for a Player",
+                                value: params[:query],
+                                data: {search_players_target: "input",
+                                action: "keyup->search-players#search"} %>
+            </div>
+          <% end %>
+
+
 <table class="table">
   <thead>
     <tr>

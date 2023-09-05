@@ -17,7 +17,7 @@
       <div class="col-md-8">
         <div class="row">
         <h3 class="d-flex justify-content-center">INPUTS</h3>
-          <%# <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::TYPE_OF_ACTIONS %>
+          <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::TYPE_OF_ACTIONS %>
         </div>
 
         <div class="row">
@@ -29,7 +29,7 @@
                       item_wrapper_class: 'position-item',
                       input_html: { class: 'position-selector' },
                       # label_method: lambda { |position| render "games/position", position: position },
-                      collection: PlayerAction::POSITION %>
+                      collection: PlayerAction::POSITIONS %>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
 
 
 
-    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::RESULT %>
+    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::SHOT_RESULTS %>
 
     <%= f.submit 'End Game' %>
 

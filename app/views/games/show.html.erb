@@ -1,16 +1,27 @@
-<div class="container-fluid">
-  <div class="row d-flex justify-content-center">
-    <%= @game.team.name %>
-    <%= @game.date %>
-    <%= @game.tournament %>
-    <%= @game.location %>
+﻿<%= @game.team.name %>
+<%= @game.date %>
+<%= @game.tournament %>
+<%= @game.location %>
+
+
+<div class="container">
+  <%= simple_form_for [@game, @player_action] do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :player_id, as: :radio_buttons, collection: @players + @opponents %>
+    <%#= f.input :player_id, as: :radio_buttons, collection: @opponents %>
+
+    <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::TYPE_OF_ACTIONS %>
+    <%= f.input :position, as: :radio_buttons, collection: PlayerAction::POSITION %>
+
+    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::SHOT_RESULT %>
+    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::EXCLUSION_RESULT %>
+
   </div>
-</div>
+    <%= f.submit 'End Game' %>
 
-<div class="row">
-  <%= render "games/form", game: @game %>
+  <% end %>
 </div>
-
 
 <table class="table">
   <thead>
@@ -21,30 +32,15 @@
       <th scope="col">Player</th>
     </tr>
   </thead>
+
   <tbody>
-
-<div class="container">
-  <table class="table">
-    <thead>
+    <% @player_actions.each do |action| %>
       <tr>
-        <th scope="col">Action</th>
-        <th scope="col">Score</th>
-        <th scope="col">Cap</th>
-        <th scope="col">Player</th>
+        <td><%= player_action_message(action) %></td>
+        <td><%= @game_result %> x <%= @opponent_result %></td>
+        <td>Cap#</td>
+        <td><%= action.player.name %></td>
       </tr>
-    </thead>
-
-    <tbody>
-      <% @player_actions.each do |player_action| %>
-        <tr>
-          <%= render "game_messages", player_action: player_action %>
-          <td>0 x 0</td>
-          <td>Cap#</td>
-          <td><%= player_action.player.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<%= link_to "Download PDF", pdf_game_path(@game, format: :pdf) %>
+    <% end %>
+  </tbody>
+</table>
