@@ -1,22 +1,27 @@
-<%= @game.team.name %>
-<%= @game.date %>
-<%= @game.tournament %>
-<%= @game.location %>
-
-
-<div class="container">
-  <%= simple_form_for [@game, @player_action] do |f| %>
-    <div class="form-inputs">
-      <%= f.input :player_id, as: :radio_buttons, collection: @players + @opponents %>
-      <%#= f.input :player_id, as: :radio_buttons, collection: @opponents %>
-      <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::TYPE_OF_ACTIONS %>
-      <%= f.input :position, as: :radio_buttons, collection: PlayerAction::POSITION %>
-      <%= f.input :result, as: :radio_buttons, collection: PlayerAction::SHOT_RESULT %>
-    </div>
-    <%= f.submit 'confirme action' %>
-  <% end %>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <%= @game.team.name %>
+    <%= @game.date %>
+    <%= @game.tournament %>
+    <%= @game.location %>
+  </div>
 </div>
 
+<div class="row">
+  <%= render "games/form", game: @game %>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Action</th>
+      <th scope="col">Score</th>
+      <th scope="col">Cap</th>
+      <th scope="col">Player</th>
+    </tr>
+  </thead>
+  <tbody>
 
 <div class="container">
   <table class="table">
@@ -41,9 +46,5 @@
     </tbody>
   </table>
 </div>
-    <% end %>
-  </tbody>
-</table>
-
 
 <%= link_to "Download PDF", pdf_game_path(@game, format: :pdf) %>

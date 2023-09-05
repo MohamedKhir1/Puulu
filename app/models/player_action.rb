@@ -6,13 +6,13 @@ class PlayerAction < ApplicationRecord
                       'Extra player shot', 'Counter attack', 'Penalty foul', 'Exclusion',
                       'Double exclusion', 'Rebound']
 
-  POSITION = ['L2M', 'C2M', 'R2M', 'Back LEFT', 'Back CENTER', 'Back RIGHT', 'F6M']
+  POSITIONS = ['L2M', 'C2M', 'R2M', 'BACK LEFT', 'BACK CENTER', 'BACK RIGHT', 'F6M']
 
   # 6M Direct shot in free throw
   # Shot
   # Extra player shot
   # Counter attack
-  SHOT_RESULT = ['Post', 'Saved', 'Goal', 'Missed', 'Blocked', 'Corner']
+  SHOT_RESULTS = ['Post', 'Saved', 'Goal', 'Missed', 'Blocked', 'Corner']
 end
 
 # need to belong to the team
