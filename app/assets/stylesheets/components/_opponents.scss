@@ -1,7 +1,7 @@
 ﻿.opponents-wrapper {
   display: grid;
   grid-column: auto / span 1;
-  gap: 0.3em;
+  gap: 0.2em;
   // grid-template-columns: 1fr;
 
 }
@@ -39,11 +39,11 @@
 }
 
 
-#player_action_player_id_13 + label {
+#player_action_opponent_id_13 + label {
   color: #FD1015;
 }
 
-#player_action_player_id_13:checked + label {
+#player_action_opponent_id_13:checked + label {
   background-color: #FD1015;
   border-color: #FD1015;
 }
