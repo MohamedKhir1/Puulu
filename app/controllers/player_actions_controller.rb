@@ -9,7 +9,16 @@ class PlayerActionsController < ApplicationController
     @opponents = @opponent_team.players
 
     @player_action.game = @game
+
+    if @player_action.kind.empty? && params[:player_action][:kind_extra].present?
+      @player_action.kind = params[:player_action][:kind_extra]
+    end
+
+    if @player_action.player_id.nil? && params[:player_action][:opponent_id].present?
+      @player_action.player = Player.find(params[:player_action][:opponent_id])
+    end
     @player_action.save!
+    redirect_to game_player_actions_path(@game)
   end
 
   private
