@@ -8,22 +8,20 @@
   <%= simple_form_for [@game, @player_action] do |f| %>
 
   <div class="form-inputs">
-    <%= f.input :player_id, as: :radio_buttons,label: '',   collection: @players + @opponents %>
+    <%= f.input :player_id, as: :radio_buttons, collection: @players + @opponents %>
     <%#= f.input :player_id, as: :radio_buttons, collection: @opponents %>
 
     <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::TYPE_OF_ACTIONS %>
     <%= f.input :position, as: :radio_buttons, collection: PlayerAction::POSITION %>
 
-    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::RESULT %>
+    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::SHOT_RESULT %>
+    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::EXCLUSION_RESULT %>
+
   </div>
     <%= f.submit 'End Game' %>
 
   <% end %>
 </div>
-
-
-
-
 
 <table class="table">
   <thead>
@@ -34,22 +32,15 @@
       <th scope="col">Player</th>
     </tr>
   </thead>
+
   <tbody>
-
-
-<% @player_actions.each do |action| %>
-    <tr>
-      <% if (action.kind == 'shot' && action.position == 'C2M') %>
-        <td><%= 'Centre shot'%> - <%= action.result %></td>
-      <% elsif %>
-        <td> <%= 'Action shot' %> - <%= action.result %></td>
-      <%end %>
-
-         <td><%= @game_result %> x <%= @opponent_result %></td>
-
-      <td>#</td>
-      <td><%= action.player.name %></td>
-    </tr>
+    <% @player_actions.each do |action| %>
+      <tr>
+        <td><%= player_action_message(action) %></td>
+        <td><%= @game_result %> x <%= @opponent_result %></td>
+        <td>Cap#</td>
+        <td><%= action.player.name %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
