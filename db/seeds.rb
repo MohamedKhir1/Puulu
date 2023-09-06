@@ -97,7 +97,7 @@ timings.each do |time|
     time:     time,
     kind:     kind,
     result:   result,
-    position: PlayerAction::POSITION.sample
+    position: PlayerAction::POSITIONS.sample
   )
 end
 
