@@ -2,9 +2,12 @@ class PlayerAction < ApplicationRecord
   belongs_to :player
   belongs_to :game
 
-  TYPE_OF_ACTIONS =  ['Shot', 'Turnover foul', 'Steal', '6M Direct shot in free throw',
-                      'Extra player shot', 'Counter attack', 'Penalty foul', 'Exclusion',
-                      'Double exclusion', 'Rebound']
+  attr_accessor :opponent_id, :kind_extra
+
+  TYPE_OF_ACTIONS = ['Shot', 'Turnover foul', 'Steal',
+                     'Counter attack', 'Exclusion', 'Rebound',
+                     'Extra player shot', 'Penalty foul', 'Direct free throw',
+                     'Double exclusion']
 
   POSITIONS = ['L2M', 'C2M', 'R2M', 'BACK LEFT', 'BACK CENTER', 'BACK RIGHT', 'F6M']
 

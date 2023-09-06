@@ -1,4 +1,4 @@
-﻿<%= simple_form_for [@game, @player_action] do |f| %>
+<%= simple_form_for [@game, @player_action] do |f| %>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
@@ -10,79 +10,66 @@
                       collection_wrapper_class: 'players-wrapper',
                       item_wrapper_class: 'players-item',
                       input_html: { class: 'players-selector' },
-                      collection: @players %>
+                      collection: @players.first(7) %>
         </div>
       </div>
 
       <div class="col-md-8">
         <div class="row">
-        <h3 class="d-flex justify-content-center">INPUTS</h3>
-          <%= f.input :kind, as: :radio_buttons, collection: PlayerAction::TYPE_OF_ACTIONS %>
-        </div>
-
-        <div class="row">
-          <%= f.input :position,
+          <%= f.input :kind,
                       as: :radio_buttons,
                       legend_tag: false,
                       collection_wrapper_tag: 'div',
-                      collection_wrapper_class: 'position-wrapper',
-                      item_wrapper_class: 'position-item',
-                      input_html: { class: 'position-selector' },
-                      # label_method: lambda { |position| render "games/position", position: position },
-                      collection: PlayerAction::POSITIONS %>
+                      collection_wrapper_class: 'actions-wrapper',
+                      item_wrapper_class: 'actions-item',
+                      input_html: { class: 'actions-selector' },
+                      collection: PlayerAction::TYPE_OF_ACTIONS.first(6) %>
+        </div>
+
+        <div class="row justify-content-center">
+          <fieldset class="w-75">
+            <%= f.input :position,
+                        as: :radio_buttons,
+                        legend_tag: false,
+                        collection_wrapper_tag: 'div',
+                        collection_wrapper_class: 'position-wrapper',
+                        item_wrapper_class: 'position-item',
+                        input_html: { class: 'position-selector' },
+                        # label_method: lambda { |position| render "games/position", position: position },
+                        collection: PlayerAction::POSITIONS %>
+          </fieldset>
+        </div>
+
+        <div class="row">
+          <%= f.input :kind_extra,
+                      as: :radio_buttons,
+                      legend_tag: false,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'actions-wrapper',
+                      item_wrapper_class: 'actions-item',
+                      input_html: { class: 'actions-selector' },
+                      collection: PlayerAction::TYPE_OF_ACTIONS.last(4) %>
         </div>
       </div>
 
       <div class="col-md-2">
         <div class="row">
-          <%= f.input :player_id,
+          <%= f.input :opponent_id,
                       as: :radio_buttons,
                       legend_tag: false,
                       collection_wrapper_tag: 'div',
                       collection_wrapper_class: 'opponents-wrapper',
                       item_wrapper_class: 'opponents-item',
                       input_html: { class: 'opponents-selector' },
-                      collection: @opponents %>
+                      collection: @opponents.first(7) %>
         </div>
       </div>
-
     </div>
   </div>
 
-
-
     <%= f.input :result, as: :radio_buttons, collection: PlayerAction::SHOT_RESULTS %>
 
-    <%= f.submit 'End Game' %>
-
-
-
-
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
+      <%= f.submit 'Valid' %>
 
 <% end %>
 
