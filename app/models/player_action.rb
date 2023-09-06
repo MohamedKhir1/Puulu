@@ -4,13 +4,13 @@ class PlayerAction < ApplicationRecord
   has_one :team, through: :player
 
   attr_accessor :opponent_id, :kind_extra
-  
+
   after_commit :set_score, on: :create
 
   TYPE_OF_ACTIONS = ['Shot', 'Turnover foul', 'Steal',
                      'Counter attack', 'Exclusion', 'Rebound',
                      'Extra player shot', 'Penalty foul', 'Direct free throw',
-                     'Double exclusion']
+                     'Double exclusion', 'Penalty shot']
 
   POSITIONS = ['L2M', 'C2M', 'R2M', 'BACK LEFT', 'BACK CENTER', 'BACK RIGHT', 'F6M']
 
@@ -19,9 +19,17 @@ class PlayerAction < ApplicationRecord
   # Extra player shot
   # Counter attack
   SHOT_RESULTS = ['Post', 'Saved', 'Goal', 'Missed', 'Blocked', 'Corner']
-  
+
+  RESULT_PER_KIND = {
+    "Shot"                         => %w[post saved goal missed blocked corner],
+    "Direct free throw"            => %w[post saved goal missed blocked corner],
+    "Extra player shot"            => %w[post saved goal missed blocked corner],
+    "Counter attack"               => %w[post saved goal missed blocked corner],
+    "Penalty shot"                 => %w[post saved goal missed corner]
+  }
+
   def goal?
-    kind == "Goal"
+    kind == "goal"
   end
 
   private
