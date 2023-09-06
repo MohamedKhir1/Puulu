@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :games, only: %i[new create show] do
     member do
       get 'pdf', to: 'games#pdf'
+      get 'result', to: 'games#result'
     end
 
     resources :player_actions, only: %i[create]
