@@ -1,4 +1,4 @@
-﻿<%= simple_form_for [@game, @player_action] do |f| %>
+<%= simple_form_for [@game, @player_action] do |f| %>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
@@ -50,7 +50,6 @@
                       input_html: { class: 'actions-selector' },
                       collection: PlayerAction::TYPE_OF_ACTIONS.last(4) %>
         </div>
-
       </div>
 
       <div class="col-md-2">
@@ -65,14 +64,12 @@
                       collection: @opponents.first(7) %>
         </div>
       </div>
-
     </div>
   </div>
 
     <%= f.input :result, as: :radio_buttons, collection: PlayerAction::SHOT_RESULTS %>
 
       <%= f.submit 'Valid' %>
-
 
 <% end %>
 

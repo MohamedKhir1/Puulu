@@ -22,7 +22,7 @@ class GamesController < ApplicationController
 
     @team = @game.team
     @players = @team.players
-    # @player = @players.find(params[:id])
+    @player = @players.find(params[:id])
 
     @opponent_team = @game.opponent_team
     @opponents = @opponent_team.players
@@ -31,16 +31,6 @@ class GamesController < ApplicationController
 
     @team_result = @game.result
     @opponent_result = @game.opponent_result
-  end
-
-  def pdf
-    @game = Game.find(params[:id])
-
-    respond_to do |format|
-      format.pdf do
-        render pdf: "file_name", template: "shared/actions", encoding: 'UTF-8'
-      end
-    end
   end
 
   private

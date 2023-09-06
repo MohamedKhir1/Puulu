@@ -8,5 +8,11 @@ class DashboardsController < ApplicationController
     # @teams = Team.where(user_id: current_user).order(:name)
     @user = User.find(current_user.id)
     @teams = current_user.teams
+
+    @games = Game.all.group_by(&:date)
+  end
+
+  def result
+
   end
 end
