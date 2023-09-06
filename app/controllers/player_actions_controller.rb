@@ -18,7 +18,8 @@ class PlayerActionsController < ApplicationController
       @player_action.player = Player.find(params[:player_action][:opponent_id])
     end
     @player_action.save!
-    redirect_to game_player_actions_path(@game)
+
+    redirect_to game_path(@game)
   end
 
   private
