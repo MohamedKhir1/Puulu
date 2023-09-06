@@ -33,6 +33,10 @@ class GamesController < ApplicationController
     @opponent_result = @game.opponent_result
   end
 
+  def result
+    @game = Game.find(params[:id])
+  end
+
   private
 
   def set_game
