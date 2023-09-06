@@ -1,6 +1,7 @@
 ﻿<%= render "shared/team_header" %>
 
 <div class="container">
+  <%# pages_menus %>
   <div class="row">
     <div class="col-12 col-lg-3"></div>
     <div class="col-12 col-lg-9 ps-0">
@@ -20,8 +21,9 @@
     </div>
   </div>
 
-  <%# menu %>
+
   <div class="row">
+    <%# side_bar_menu %>
     <div class="col-12 col-lg-3 position-sticky ">
       <div class="d-flex gap-1 flex-column">
         <%= link_to new_game_path, class: "btn btn-light" do %>
@@ -41,33 +43,20 @@
     <%# pages %>
     <div class="col-12 col-lg-9 pe-0">
       <div class="tab-content" id="pills-tabContent">
+        <%# Stats %>
         <div class="tab-pane fade show active" id="pills-stats" role="tabpanel" aria-labelledby="pills-stats-tab">
-          <%= render "shared/all-stats_list" %>
+          <%= render "stats_list" %>
         </div>
 
+        <%# Players %>
         <div class="tab-pane fade" id="pills-players" role="tabpanel" aria-labelledby="pills-players-tab">
-          <%= form_with url: root_path, method: :get, html: {class:
-          "mb-3", data: {search_players_target: "form"}} do |f| %>
-            <div class="form-inputs">
-              <%= f.select :two, [['Option 1',1],['Option 2',2]], class:%>
-
-              <%= f.text_field :query,
-                                class: "form-inputs",
-                                placeholder: "Search for a Player",
-                                value: params[:query],
-                                data: {search_players_target: "input",
-                                action: "keyup->search-players#search"} %>
-            </div>
-          <% end %>
-
-
-         <%= render "shared/player-list" %>
+          <%= render "player_list" %>
         </div>
 
+        <%# Results %>
         <div class="tab-pane fade" id="pills-results" role="tabpanel" aria-labelledby="pills-results-tab">
-          Results
+          <%= render "result_list" %>
         </div>
       </div>
-    </div>
   </div>
 </div>

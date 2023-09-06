@@ -1,0 +1,69 @@
+﻿.opponents-wrapper {
+  display: grid;
+  grid-column: auto / span 1;
+  gap: 0.2em;
+  // grid-template-columns: 1fr;
+
+}
+
+// .opponents-item {
+//   flex: 1 1 160px;
+//   // flex: 0 0 30%;
+// }
+
+.opponents-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.opponents-selector + label {
+  display: inline-block;
+        width: 100%;
+        height: 20px;
+        vertical-align: middle;
+        line-height: 20px;
+  // display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: right;
+  padding: 10px 10px 30px 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.opponents-selector:checked + label {
+  color: white !important;
+}
+
+
+#player_action_opponent_id_13 + label {
+  color: #FD1015;
+}
+
+#player_action_opponent_id_13:checked + label {
+  background-color: #FD1015;
+  border-color: #FD1015;
+}
+
+
+// #PlayerAction_position_javascript + label {
+//   color: #FFC65A;
+// }
+
+// #PlayerAction_position_javascript:checked + label {
+//   background-color: #FFC65A;
+//   border-color: #FFC65A;
+// }
+
+
+// #PlayerAction_position_css + label {
+//   color: #62DDF5;
+// }
+
+// #PlayerAction_position_css:checked + label {
+//   background-color: #62DDF5;
+//   border-color: #62DDF5;
+// }
