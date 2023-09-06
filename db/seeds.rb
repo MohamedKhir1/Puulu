@@ -91,7 +91,7 @@ timings.each do |time|
   kind   = PlayerAction::TYPE_OF_ACTIONS.sample
   result = PlayerAction::RESULT_PER_KIND[kind].sample if PlayerAction::RESULT_PER_KIND.key?(kind)
 
-  PlayerAction.create(
+  PlayerAction.create!(
     game:     current_game,
     player:   current_game.players.sample,
     time:     time,
