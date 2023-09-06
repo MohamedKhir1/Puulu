@@ -78,7 +78,7 @@ player13 = Player.create!({ name: "Hugo FONTANI", nationality: "French", gender:
                             available: true, team: team1 })
 
 puts "seed game"
-current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 10, opponent_result: 7, team: team1)
+current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 0, opponent_result: 0, team: team1)
 
 puts 'seed actions'
 PlayerAction.create!({ kind: "Starting Goalkeeper", time: "08:00", game: current_game, player: current_game.team.players.sample })
@@ -91,7 +91,7 @@ timings.each do |time|
   kind   = PlayerAction::TYPE_OF_ACTIONS.sample
   result = PlayerAction::RESULT_PER_KIND[kind].sample if PlayerAction::RESULT_PER_KIND.key?(kind)
 
-  PlayerAction.create!(
+  PlayerAction.create(
     game:     current_game,
     player:   current_game.players.sample,
     time:     time,
