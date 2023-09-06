@@ -22,7 +22,6 @@ class GamesController < ApplicationController
 
     @team = @game.team
     @players = @team.players
-    @player = @players.find(params[:id])
 
     @opponent_team = @game.opponent_team
     @opponents = @opponent_team.players
