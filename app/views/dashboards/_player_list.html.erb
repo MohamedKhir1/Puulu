@@ -1,51 +1,16 @@
-<%= form_with url: root_path, method: :get, html: {class:
-          "mb-3", data: {search_players_target: "form"}} do |f| %>
-            <div class="form-inputs">
-              <%= f.select :two, [['Option 1',1],['Option 2',2]], class:%>
+ <div class="player-container">
+  <div class="player-content-container">
+    <div class="col-5 fw-bold" style="margin-left: 1rem">Name</div>
+    <div class="col fw-bold" style="margin-left: -1rem">Position</div>
+    <div class="col fw-bold">Handedness</div>
+    <div class="col fw-bold text-center">Year</div>
+    <div class="col-2 fw-bold text-center">Nationality</div>
+    <div class="col fw-bold text-end">Details</div>
+  </div>
 
-              <%= f.text_field :query,
-                                class: "form-inputs",
-                                placeholder: "Search for a Player",
-                                value: params[:query],
-                                data: {search_players_target: "input",
-                                action: "keyup->search-players#search"} %>
-            </div>
-          <% end %>
-
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Position</th>
-      <th scope="col">handedness</th>
-      <th scope="col">Year</th>
-      <th scope="col">nationality</th>
-      <th scope="col">Details</th>
-    </tr>
-  </thead>
-  <tbody>
-
-  <% 10.times do %>
-    <tr>
-      <td>DUBOIS Clement</td>
-      <td class="ps-4">GK</td>
-      <td class="ps-4">right</td>
-      <td>1995</td>
-      <td>
-        <span class="d-flex gap-2">
-          <span class="flag__player">
-            <img class="w-100" src="https://resources.premierleague.com/premierleague/flags/FR@x2.png">
-          </span>
-          <span>France</span>
-        </span>
-      </td>
-      <td class="ps-4">
-        <%= link_to "/players/1" do %>
-          <i class="fa-solid fa-arrow-right" style="color: var(--bs-primary);"></i>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+  <div class="mt-2">
+    <% @players.each do |player| %>
+      <%= render 'player_card_item', player: player %>
+    <% end %>
+  </div>
+</div>

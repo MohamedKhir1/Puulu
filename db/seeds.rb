@@ -30,59 +30,59 @@ team2 = Team.create!({ name: "Équipe de Pas France", category: "Senior", countr
 
 puts "Creating players..."
 player1 = Player.create!({ name: "Clément DUBOIS", nationality: "French", gender: "Male",
-                           birthdate: "1995".to_i, position: "Goalkeeper", handedness: "Right-Handed",
+                           birthdate: "1995".to_i, position: "GK", handedness: "Right",
                            available: true, team: team1 })
 
 player3 = Player.create!({ name: "Ugo CROUSILLAT", nationality: "French", gender: "Male",
-                           birthdate: "1990", position: "Field Player", handedness: "Right-Handed",
+                           birthdate: "1990", position: "FP", handedness: "Right",
                            available: true, team: team1 })
 
 player4 = Player.create!({ name: "Alexandre BOUET", nationality: "French", gender: "Male",
-                           birthdate: "2000", position: "Field Player", handedness: "Right-Handed",
+                           birthdate: "2000", position: "FP", handedness: "Right",
                            available: true, team: team1 })
 
 player5 = Player.create!({ name: "Enzo KHASZ", nationality: "French", gender: "Male",
-                           birthdate: "1993", position: "Field Player", handedness: "Right-Handed",
+                           birthdate: "1993", position: "FP", handedness: "Right",
                            available: true, team: team1 })
 
 player6 = Player.create!({ name: "Thomas VERNOUX", nationality: "French", gender: "Male",
-                           birthdate: "2002", position: "Field Player", handedness: "Right-Handed",
+                           birthdate: "2002", position: "FP", handedness: "Right",
                            available: true, team: team1 })
 
 player7 = Player.create!({ name: "Duje ZIVKOVIC", nationality: "French", gender: "Male",
-                           birthdate: "1990", position: "Field Player", handedness: "Left-Handed",
+                           birthdate: "1990", position: "FP", handedness: "Left",
                            available: true, team: team1 })
 
 player8 = Player.create!({ name: "Emil BJORCH", nationality: "French", gender: "Male",
-                           birthdate: "1987", position: "Field Player", handedness: "Right-Handed",
+                           birthdate: "1987", position: "FP", handedness: "Right",
                            available: true, team: team1 })
 
 player9 = Player.create!({ name: "Mehdi MARZOUKI", nationality: "French", gender: "Male",
-                           birthdate: "1987", position: "Field Player", handedness: "Right-Handed",
+                           birthdate: "1987", position: "FP", handedness: "Right",
                            available: true, team: team1 })
 
 player10 = Player.create!({ name: "Charles CANNONE", nationality: "French", gender: "Male",
-                            birthdate: "1996", position: "Field Player", handedness: "Left-Handed",
+                            birthdate: "1996", position: "FP", handedness: "Left",
                             available: true, team: team1 })
 
 player11 = Player.create!({ name: "Pierre-Frederic VANPEPERSTRAETE", nationality: "French",
-                            gender: "Male", birthdate: "1992", position: "Field Player", handedness: "Right-Handed",
+                            gender: "Male", birthdate: "1992", position: "FP", handedness: "Right",
                             available: true, team: team1 })
 
 player12 = Player.create!({ name: "Andrea DE NARDI", nationality: "French", gender: "Male",
-                            birthdate: "1998", position: "Field Player", handedness: "Right-Handed",
+                            birthdate: "1998", position: "FP", handedness: "Right",
                             available: true, team: team1 })
 
 player13 = Player.create!({ name: "Hugo FONTANI", nationality: "French", gender: "Male",
-                            birthdate: "1994", position: "Goalkeeper", handedness: "Right-Handed",
+                            birthdate: "1994", position: "GK", handedness: "Right",
                             available: true, team: team1 })
 
 puts "seed game"
 current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 0, opponent_result: 0, team: team1)
 
 puts 'seed actions'
-PlayerAction.create!({ kind: "Starting Goalkeeper", time: "08:00", game: current_game, player: current_game.team.players.sample })
-PlayerAction.create!({ kind: "Starting Goalkeeper", time: "08:00", game: current_game, player: current_game.opponent_team.players.sample })
+PlayerAction.create!({ kind: "Starting GK", time: "08:00", game: current_game, player: current_game.team.players.sample })
+PlayerAction.create!({ kind: "Starting GK", time: "08:00", game: current_game, player: current_game.opponent_team.players.sample })
 PlayerAction.create!({ kind: "Sprint won possession", time: "08:00", game: current_game, player: current_game.team.players.sample })
 
 timings = ["7:38", "7:23", "7:23", "6:59", "6:37", "6:21", "6:02", "5:50", "5:36", "5:28", "5:11", "4:48", "4:43", "4:26", "4:14", "4:01", "3:51", "3:33", "3:18", "2:58", "2:37", "2:17", "1:47", "1:24", "1:06", "0:53", "0:39", "0:19", "0:02"]
