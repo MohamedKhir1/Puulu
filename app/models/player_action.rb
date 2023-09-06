@@ -2,15 +2,15 @@ class PlayerAction < ApplicationRecord
   belongs_to :player
   belongs_to :game
   has_one :team, through: :player
+  
+  after_commit :set_score, on: :create
 
   attr_accessor :opponent_id, :kind_extra
 
-  after_commit :set_score, on: :create
-
-  TYPE_OF_ACTIONS = ['Shot', 'Turnover foul', 'Steal',
-                     'Counter attack', 'Exclusion', 'Rebound',
-                     'Extra player shot', 'Penalty foul', 'Direct free throw',
-                     'Double exclusion', 'Penalty shot']
+  TYPE_OF_ACTIONS = ['SHOT', 'TURNOVER FOUL', 'STEAL',
+                     'COUNTER ATTACK', 'EXCLUSION', 'REBOUND',
+                     'EXTRA PLAYER SHOT', 'PENALTY FOUL', 'DIRECT FREE THROW',
+                     'DOUBLE EXCLUSION']
 
   POSITIONS = ['L2M', 'C2M', 'R2M', 'BACK LEFT', 'BACK CENTER', 'BACK RIGHT', 'F6M']
 
@@ -18,7 +18,7 @@ class PlayerAction < ApplicationRecord
   # Shot
   # Extra player shot
   # Counter attack
-  SHOT_RESULTS = ['Post', 'Saved', 'Goal', 'Missed', 'Blocked', 'Corner']
+  SHOT_RESULTS = ['POST', 'SAVED', 'GOAL', 'MISSED', 'BLOCKED', 'CORNER']
 
   RESULT_PER_KIND = {
     "Shot"                         => %w[post saved goal missed blocked corner],

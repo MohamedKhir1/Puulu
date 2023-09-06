@@ -1,43 +1,14 @@
-﻿<div class="container-fluid">
+<div class="container-fluid">
   <div class="row d-flex justify-content-center">
-    <%= @game.team.name %>
+    <%# <%= @game.team.name %>
     <%= render "game_messages", player_action: @player_actions.last %>
     <%= @player_actions.last.player.name %>
   </div>
 </div>
+
 <div class="row">
   <%= render "games/form", game: @game %>
 </div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Action</th>
-      <th scope="col">Score</th>
-      <th scope="col">Cap</th>
-      <th scope="col">Player</th>
-    </tr>
-  </thead>
-  <tbody>
-<div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Action</th>
-        <th scope="col">Score</th>
-        <th scope="col">Cap</th>
-        <th scope="col">Player</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @player_actions.each do |player_action| %>
-        <tr>
-          <%= render "game_messages", player_action: player_action %>
-          <td>0 x 0</td>
-          <td>Cap#</td>
-          <td><%= player_action.player.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<%= link_to "Download PDF", pdf_game_path(@game, format: :pdf) %>
+
+
+<%# <%= link_to "Download PDF", pdf_game_path(@game, format: :pdf) %>
