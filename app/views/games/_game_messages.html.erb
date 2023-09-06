@@ -1,5 +1,10 @@
+<%# TYPE_OF_ACTIONS = ['SHOT', 'TURNOVER FOUL', 'STEAL',
+                     'COUNTER ATTACK', 'EXCLUSION', 'REBOUND',
+                     'EXTRA PLAYER SHOT', 'PENALTY FOUL', 'DIRECT FREE THROW',
+                     'DOUBLE EXCLUSION'] %>
+
 <%# 6M Direct shot in free throw %>
-<% if (player_action.kind == 'Direct free throw') %>
+<% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[8]) %>
   <td><%= "6 metre direct shot in free throw - #{player_action.result}" %></td>
 <% end %>
 
@@ -38,20 +43,20 @@
 <% end %>
 
 <%# Shot %>
-<% if (player_action.kind == 'Shot' && player_action.position == 'C2M') %>
+<% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[0] && player_action.position == 'C2M') %>
   <td><%= "Centre shot - #{player_action.result}" %></td>
 <% end %>
 
-<% if (player_action.kind == 'Shot' && player_action.position != 'C2M') %>
+<% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[0] && player_action.position != 'C2M') %>
   <td><%= "Action shot - #{player_action.result}" %></td>
 <% end %>
 
 <%# Steal %>
-<% if (player_action.kind == 'Steal' && player_action.position == 'C2M') %>
+<% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[2] && player_action.position == 'C2M') %>
   <td><%= "Steal centre forward" %></td>
 <% end %>
 
-<% if (player_action.kind == 'Steal' && player_action.position != 'C2M') %>
+<% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[2] && player_action.position != 'C2M') %>
   <td><%= "Steal" %></td>
 <% end %>
 
