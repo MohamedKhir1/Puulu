@@ -10,6 +10,8 @@ class DashboardsController < ApplicationController
     @teams = current_user.teams
 
     @games = Game.all.group_by(&:date)
+
+    @players = @team.players
   end
 
   def result
