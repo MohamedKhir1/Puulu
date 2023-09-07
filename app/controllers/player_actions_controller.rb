@@ -25,6 +25,6 @@ class PlayerActionsController < ApplicationController
   private
 
   def player_action_params
-    params.require(:player_action).permit(:kind, :position, :result, :game_id, :player_id)
+    params.require(:player_action).permit(:kind, :kind_extra, :position, :result, :game_id, :player_id, :opponent_id)
   end
 end
