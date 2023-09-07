@@ -2,7 +2,7 @@ class PlayerAction < ApplicationRecord
   belongs_to :player
   belongs_to :game
   has_one :team, through: :player
-  
+
   after_commit :set_score, on: :create
 
   attr_accessor :opponent_id, :kind_extra
@@ -21,11 +21,11 @@ class PlayerAction < ApplicationRecord
   SHOT_RESULTS = ['POST', 'SAVED', 'GOAL', 'MISSED', 'BLOCKED', 'CORNER']
 
   RESULT_PER_KIND = {
-    "Shot"                         => %w[post saved goal missed blocked corner],
-    "Direct free throw"            => %w[post saved goal missed blocked corner],
-    "Extra player shot"            => %w[post saved goal missed blocked corner],
-    "Counter attack"               => %w[post saved goal missed blocked corner],
-    "Penalty shot"                 => %w[post saved goal missed corner]
+    "SHOT"                         => %w[POST SAVED GOAL MISSED BLOCKED CORNER],
+    "DIRECT FREE THROW"            => %w[POST SAVED GOAL MISSED BLOCKED CORNER],
+    "EXTRA PLAYER SHOT"            => %w[POST SAVED GOAL MISSED BLOCKED CORNER],
+    "COUNTER ATTACK"               => %w[POST SAVED GOAL MISSED BLOCKED CORNER],
+    "PENALTY SHOT"                 => %w[POST SAVED GOAL MISSED CORNER]
   }
 
   def goal?

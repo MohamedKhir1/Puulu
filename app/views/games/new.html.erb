@@ -1,50 +1,51 @@
-﻿<div class="py-5 text-center container">
-  <div class="row py-lg-5">
-    <div class="col-lg-8 col-md-8 mx-auto">
-      <h1 class="fw-light"><%= current_user.name %>, create a new Game !</h1>
-      <p class="lead text-muted">Pick a Team and start to play !</p>
-    </div>
+﻿<%= render 'shared/page_header', children: "New game" %>
 
-    <%= simple_form_for [@game] do |f| %>
-      <div class="row gy-2 gx-3 justify-content-sm-center">
-        <div class="col-auto">
-          <%= f.input :date, placeholder: "Date", label: false, as: :string,
-                      input_html: { data: { controller: "datepicker" }} %>
+
+
+<div class="container wrapper login-box">
+  <div class="row justify-content-center">
+    <div class="col-5 mb-5">
+      <h2 class="bg-secondary h4 mb-4 px-3 py-2 fw-bold">
+        Creating a new game
+      </h2>
+
+      <%= simple_form_for [@game] do |f| %>
+        <div class="form-inputs">
+          <%= f.input :date,
+                      label: "Game date",
+                      placeholder: "Game date",
+                      autofocus: true,
+                      as: :string,
+                      input_html: {
+                        data: { controller: "datepicker" }
+                      } %>
+
+          <%= f.association :team,
+                            prompt: 'Team category',
+                            collection: current_user.teams%>
+
+          <%= f.input :tournament,
+                        label: "Tournament",
+                        placeholder: "Tournament",
+                        as: :string,
+                        required: false %>
+
+          <%= f.input :location,
+                      label: "Location",
+                      placeholder: "Location",
+                      as: :string %>
+
+          <%= f.input :opponent_team,
+                      label: "Opponent's name",
+                      placeholder: "Opponent's name",
+                      as: :string,
+                      required: true %>
         </div>
 
-        <div class="col-auto">
-          <%= f.association :team, prompt: 'Team', label: false,
-                            collection: current_user.teams %>
+        <div class="d-flex form-actions justify-content-center mt-5">
+          <%= f.submit "Create new game", class: "btn btn-primary col-12 col-md-8" %>
         </div>
-
-        <div class="col-auto">
-          <%= f.input :tournament, placeholder: "Tournament", label: false,
-                      as: :string, required: false %>
-        </div>
-      </div>
-
-      <div class="row gy-2 gx-3 justify-content-sm-center">
-        <div class="col-auto">
-          <%= f.input :location, placeholder: "Location", label: false, as: :string %>
-        </div>
-
-        <div class="col-auto">
-          <%= f.input :round, placeholder: "Round", label: false, as: :string, required: false %>
-        </div>
-      </div>
-
-      <div class="row gy-2 gx-3 justify-content-sm-center">
-        <div class="col-auto">
-          <%= f.submit "GOOOO!", class: "btn btn-primary" %>
-        </div>
-      </div>
-    <% end %>
-
-    <div style="margin-top: 25px; margin-bottom:25px">
-      <hr>
-    </div>
-    <div class="">
-      <%= link_to "Dashboard", dashboard_path, class: 'btn btn-info' %>
-    </div>
+      <% end %>
+  </div>
   </div>
 </div>

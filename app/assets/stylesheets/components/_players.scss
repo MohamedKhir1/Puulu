@@ -3,19 +3,13 @@
   grid-column: auto / span 1;
   gap: 0.2em;
   // grid-template-columns: 1fr;
-  // .players-item {
-  //   background-color: green !important;
-  //   label {}
-  //   &:checked + label {
-
-  //   }
-  // }
 }
 
-// .players-item {
-//   flex: 1 1 160px;
-//   // flex: 0 0 30%;
-// }
+.players-wrapper:first-child + label {
+  color: whitesmoke;
+  background-color: #FE5A1D;
+  border-color: #F04A00;
+}
 
 .players-selector {
   position: absolute;
@@ -61,23 +55,3 @@
   background-color: #EC5800;
   border-color: #F04A00;
 }
-
-
-// #PlayerAction_position_javascript + label {
-//   color: #FFC65A;
-// }
-
-// #PlayerAction_position_javascript:checked + label {
-//   background-color: #FFC65A;
-//   border-color: #FFC65A;
-// }
-
-
-// #PlayerAction_position_css + label {
-//   color: #62DDF5;
-// }
-
-// #PlayerAction_position_css:checked + label {
-//   background-color: #62DDF5;
-//   border-color: #62DDF5;
-// }

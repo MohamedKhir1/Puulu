@@ -34,6 +34,9 @@ class GamesController < ApplicationController
 
   def pdf
     @game = Game.find(params[:id])
+    @team = Team.find_by(user_id: current_user)
+
+    @opponent_team = @game.opponent_team
 
     respond_to do |format|
       format.pdf do
@@ -44,6 +47,12 @@ class GamesController < ApplicationController
 
   def result
     @game = Game.find(params[:id])
+    @players = @game.players
+
+    @teams = current_user.teams
+    @team = Team.find_by(user_id: current_user)
+
+    @opponent_team = @game.opponent_team
   end
 
   private

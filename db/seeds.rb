@@ -25,7 +25,7 @@ user1 = User.create!({ email: "test@test.com", password: "123456", name: "Cercle
 user2 = User.create!({ email: "opponent@test.com", password: "123456", name: "Cercle des Nageurs de Pas France" })
 
 puts "Creating teams..."
-team1 = Team.create!({ name: "Équipe de France", category: "Senior", country: "France", user: user1 })
+team1 = Team.create!({ name: "Cercle des Nageurs de Marseille", category: "Senior", country: "France", user: user1 })
 team2 = Team.create!({ name: "Équipe de Pas France", category: "Senior", country: "Pas France", user: user2 })
 
 puts "Creating players..."
