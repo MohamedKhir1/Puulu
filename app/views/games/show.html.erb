@@ -1,5 +1,5 @@
 ﻿<div class="container-fluid">
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center pop-outin fs-4 mb-3">
     <%# <%= @game.team.name %>
     <%= render "game_messages", player_action: @player_actions.last %>
     <%= @player_actions.last.player.name %>
@@ -9,5 +9,3 @@
 <div class="row">
   <%= render "games/form", game: @game %>
 </div>
-
-<%= link_to "Download PDF", pdf_game_path(@game, format: :pdf) %>

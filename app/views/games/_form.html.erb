@@ -9,8 +9,9 @@
                       collection_wrapper_tag: 'div',
                       collection_wrapper_class: 'players-wrapper',
                       item_wrapper_class: 'players-item',
-                      input_html: { class: 'players-selector' },
-                      collection: @players.first(7) %>
+                      input_html: { class: 'players-selector', data: { game_target: 'player', action: 'change->game#togglePlayer' } },
+                      collection: @players.first(7).map.with_index { |player, index| [ "#{index + 1} - #{player.name}", player.id ] },
+                      label_method: :first, value_method: :last %>
         </div>
       </div>
 
@@ -34,7 +35,7 @@
                         collection_wrapper_tag: 'div',
                         collection_wrapper_class: 'position-wrapper',
                         item_wrapper_class: 'position-item',
-                        input_html: { class: 'position-selector' },
+                        input_html: { class: 'position-selector', data: { game_target: 'position', action: 'change->game#toggleResult' } },
                         # label_method: lambda { |position| render "games/position", position: position },
                         collection: PlayerAction::POSITIONS %>
           </fieldset>
@@ -53,13 +54,20 @@
 
         <div class="row">
           <%= f.input :result,
+                      disabled: true,
                       as: :radio_buttons,
                       legend_tag: false,
                       collection_wrapper_tag: 'div',
                       collection_wrapper_class: 'results-wrapper',
                       item_wrapper_class: 'results-item',
-                      input_html: { class: 'results-selector' },
+                      input_html: { class: 'results-selector', data: { game_target: 'result', action: 'change->game#toggleResult' } },
                       collection: PlayerAction::SHOT_RESULTS %>
+        </div>
+
+        <div class="row justify-content-center">
+          <%= f.submit 'VALID', class: 'btn btn-primary' %>
+          <%= link_to "CANCEL", game_path, class: 'btn btn-danger mt-1' %>
+          <%= link_to "END GAME", dashboard_path, class: 'btn btn-secondary mt-5' %>
         </div>
       </div>
 
@@ -71,15 +79,14 @@
                       collection_wrapper_tag: 'div',
                       collection_wrapper_class: 'opponents-wrapper',
                       item_wrapper_class: 'opponents-item',
-                      input_html: { class: 'opponents-selector' },
-                      collection: @opponents.first(7) %>
+                      input_html: { class: 'opponents-selector', data: { game_target: 'opponent', action: 'change->game#togglePlayer' } },
+                      collection: @opponents.first(7).map.with_index { |opp, index| [ "#{opp.name.split('-').first} - #{index + 1}", opp.id ] },
+                      label_method: :first, value_method: :last %>
         </div>
       </div>
     </div>
 
-    <div>
-      <%= f.submit 'Valid' %>
-    </div>
+
   </div>
 <% end %>
 
