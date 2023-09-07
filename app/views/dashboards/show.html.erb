@@ -1,10 +1,10 @@
-﻿<%= render "shared/team_header" %>
+﻿<%= render "shared/team_header", team: @team %>
 
 <div class="container">
   <%# pages_menus %>
   <div class="row">
     <div class="col-12 col-lg-3"></div>
-    <div class="col-12 col-lg-9 ps-0">
+    <div class="col-12 col-lg-9 ps-0 mb-3">
       <ul class="nav nav-pills mb-3 bg-body-tertiary rounded-3" id="pills-tab" role="tablist">
         <li class="nav-item rounded " role="presentation">
           <button class="nav-link active" id="pills-stats-tab" data-bs-toggle="pill" data-bs-target="#pills-stats" type="button" role="tab" aria-controls="pills-stats" aria-selected="true">Stats</button>
@@ -31,7 +31,7 @@
         <% end %>
 
         <%= link_to new_team_path, class: "btn btn-light" do %>
-          New Team <i class="fa-solid fa-arrow-right" style="color: var(--bs-primary);"></i>
+          New Team Category <i class="fa-solid fa-arrow-right" style="color: var(--bs-primary);"></i>
         <% end %>
 
         <%= link_to new_team_player_url(@team.id), class: "btn btn-light" do %>
@@ -50,12 +50,27 @@
 
         <%# Players %>
         <div class="tab-pane fade" id="pills-players" role="tabpanel" aria-labelledby="pills-players-tab">
-          <%= render "player_list" %>
+          <div class="player-container">
+            <div class="player-content-container">
+              <div class="col-5 fw-bold" style="margin-left: 1rem">Name</div>
+              <div class="col fw-bold" style="margin-left: -1rem">Position</div>
+              <div class="col fw-bold">Handedness</div>
+              <div class="col fw-bold text-center">Year</div>
+              <div class="col-2 fw-bold text-center">Nationality</div>
+              <div class="col fw-bold text-end">Details</div>
+            </div>
+
+            <div class="mt-2">
+              <% @players.each do |player| %>
+                <%= render 'player_card', player: player %>
+              <% end %>
+            </div>
+          </div>
         </div>
 
         <%# Results %>
         <div class="tab-pane fade" id="pills-results" role="tabpanel" aria-labelledby="pills-results-tab">
-          <%= render "result_list" %>
+          <%= render "game_result_list" %>
         </div>
       </div>
   </div>
