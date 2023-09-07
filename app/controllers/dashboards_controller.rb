@@ -4,17 +4,22 @@ class DashboardsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:home]
 
   def show
+    @user = User.find(current_user.id)
+
+    @teams = current_user.teams
     @team = Team.find_by(user_id: current_user)
     # @teams = Team.where(user_id: current_user).order(:name)
-    @user = User.find(current_user.id)
-    @teams = current_user.teams
 
     @games = Game.all.group_by(&:date)
 
     @players = @team.players
+
+    @gol_team = 11
+    @gol_opponent = 9
   end
 
   def result
-
+    @game = Game.find(params[:id])
+    @players = @game.players
   end
 end

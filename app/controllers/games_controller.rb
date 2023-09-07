@@ -35,6 +35,21 @@ class GamesController < ApplicationController
 
   def result
     @game = Game.find(params[:id])
+    @players = @game.players
+
+    @teams = current_user.teams
+    @team = Team.find_by(user_id: current_user)
+
+    @opponent_team = @game.opponent_team
+  end
+
+  def pdf
+    @game = Game.find(params[:id])
+    respond_to do |format|
+      format.pdf do
+        render pdf: "file_name", template: "shared/actions", encoding: 'UTF-8'
+      end
+    end
   end
 
   private

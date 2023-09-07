@@ -1,13 +1,13 @@
 <% @games.each do |date, games| %>
   <div class="fixtures__date-container">
     <div class="fixtures__date-content-container">
-      <h4 class="fw-bold"><%= date %></h4>
+      <h4 class="fw-bold"><%= date.strftime("%A, %e %B %Y") %></h4>
     </div>
 
     <div class="mb-4">
       <ul class="list-unstyled">
         <% games.each do |game| %>
-          <%= render 'result_card_item', game: game %>
+          <%= render 'game_result_card', game: game %>
         <% end %>
       </ul>
     </div>

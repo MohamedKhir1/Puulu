@@ -21,7 +21,7 @@ class Game < ApplicationRecord
     13.times do
       # validates :name, :birthdate, :gender, :position, presence: true
       Player.create(name: 'Opponent', birthdate: rand(1900..2005), gender: 'Male',
-                    position: 'Field Player', team: opponent_team)
+                    position: 'FP', team: opponent_team)
     end
 
     self.opponent_team = opponent_team
@@ -29,6 +29,7 @@ class Game < ApplicationRecord
   end
 
   def generate_opponent_team_name
-    "opponent-#{SecureRandom.hex(5)}"
+    # "opponent-#{SecureRandom.hex(5)}"
+    ['Olympic Nice Natation', 'Cercle 93', 'Stade de Reims Natation', 'Taverny SN 95', 'Montpellier Water Polo', 'Team Strasbourg'].sample
   end
 end
