@@ -25,13 +25,17 @@ user1 = User.create!({ email: "test@test.com", password: "123456", name: "Cercle
 user2 = User.create!({ email: "opponent@test.com", password: "123456", name: "Cercle des Nageurs de Pas France" })
 
 puts "Creating teams..."
-team1 = Team.create!({ name: "Équipe de France", category: "Senior", country: "France", user: user1 })
+team1 = Team.create!({ name: "Cercle des Nageurs de Marseille", category: "Senior", country: "France", user: user1 })
 team2 = Team.create!({ name: "Équipe de Pas France", category: "Senior", country: "Pas France", user: user2 })
 
 puts "Creating players..."
 player1 = Player.create!({ name: "Clément DUBOIS", nationality: "French", gender: "Male",
                            birthdate: "1995".to_i, position: "GK", handedness: "Right",
                            available: true, team: team1 })
+
+player2 = Player.create!({ name: "Remi SAUDADIER", nationality: "French", gender: "Male",
+                            birthdate: "1986", position: "Field Player", handedness: "Right-Handed",
+                            available: true, team: team1 })
 
 player3 = Player.create!({ name: "Ugo CROUSILLAT", nationality: "French", gender: "Male",
                            birthdate: "1990", position: "FP", handedness: "Right",

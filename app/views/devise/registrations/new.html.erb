@@ -1,7 +1,7 @@
 <%= render 'shared/page_header', children: "Team's new account" %>
 
 <div class="container wrapper login-box">
-  <div class="row justify-content-center">
+
     <h2 class="bg-secondary h4 mb-4 px-3 py-2 fw-bold">
       Creating a new team account
     </h2>
@@ -21,17 +21,19 @@
                       label: 'Email Address',
                       required: true,
                       input_html: { placeholder:'Email Address' }%>
+
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                       input_html: { placeholder:'Password' } %>
+
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { placeholder:'Password Confirmation' } %>
           </div>
 
         <div class="d-flex form-actions justify-content-center mt-5">
-          <%= f.button :submit, "create new account", class:'btn btn-primary col-12 col-md-8' %>
+          <%= f.button :submit, "Create new account", class:'btn btn-primary col-12 col-md-8' %>
         </div>
       <% end %>
     </div>
