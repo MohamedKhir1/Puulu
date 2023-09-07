@@ -3,7 +3,13 @@
   grid-column: auto / span 1;
   gap: 0.2em;
   // grid-template-columns: 1fr;
+  // .players-item {
+  //   background-color: green !important;
+  //   label {}
+  //   &:checked + label {
 
+  //   }
+  // }
 }
 
 // .players-item {
@@ -22,30 +28,38 @@
         height: 20px;
         vertical-align: middle;
         line-height: 20px;
-  // display: block;
   cursor: pointer;
   box-sizing: border-box;
   width: 100%;
   font-size: 12px;
   text-align: left;
   padding: 10px 10px 30px 10px;
-  border: 1px solid #EAEAEA;
-  border-radius: 4px;
-  background-color: white;
+  border-radius: 1px;
+  border: 1px solid #0047AB; //#EAEAEA;
+  background-color: #007FFF;
+  // label
+  color: whitesmoke;
+  font-size: 100%;
+  font-weight: bold;
 }
 
 .players-selector:checked + label {
-  color: white !important;
+  color: whitesmoke !important;
+  font-size: 100%;
+  font-weight: bold;
+  background-color: #0070BB;
 }
 
 
 #player_action_player_id_1 + label {
-  color: #FD1015;
+  color: whitesmoke;
+  background-color: #FE5A1D;
+  border-color: #F04A00;
 }
 
 #player_action_player_id_1:checked + label {
-  background-color: #FD1015;
-  border-color: #FD1015;
+  background-color: #EC5800;
+  border-color: #F04A00;
 }
 
 

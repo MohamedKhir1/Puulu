@@ -1,4 +1,4 @@
-<%= simple_form_for [@game, @player_action] do |f| %>
+﻿<%= simple_form_for [@game, @player_action], html: { data: { controller: "game"} } do |f| %>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
@@ -15,19 +15,19 @@
       </div>
 
       <div class="col-md-8">
-        <div class="row">
+        <div class="row d-flex">
           <%= f.input :kind,
                       as: :radio_buttons,
                       legend_tag: false,
                       collection_wrapper_tag: 'div',
                       collection_wrapper_class: 'actions-wrapper',
                       item_wrapper_class: 'actions-item',
-                      input_html: { class: 'actions-selector' },
+                      input_html: { class: 'actions-selector', data: { game_target: 'kind', action: 'change->game#toggleKind' } },
                       collection: PlayerAction::TYPE_OF_ACTIONS.first(6) %>
         </div>
 
-        <div class="row justify-content-center">
-          <fieldset class="w-75">
+        <div class="row justify-content-center mb-3" style="background-color:#B9D9EB">
+          <fieldset class="w-75 mt-3">
             <%= f.input :position,
                         as: :radio_buttons,
                         legend_tag: false,
@@ -47,8 +47,19 @@
                       collection_wrapper_tag: 'div',
                       collection_wrapper_class: 'actions-wrapper',
                       item_wrapper_class: 'actions-item',
-                      input_html: { class: 'actions-selector' },
+                      input_html: { class: 'actions-selector', data: { game_target: 'kindExtra', action: 'change->game#toggleKind' } },
                       collection: PlayerAction::TYPE_OF_ACTIONS.last(4) %>
+        </div>
+
+        <div class="row">
+          <%= f.input :result,
+                      as: :radio_buttons,
+                      legend_tag: false,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'results-wrapper',
+                      item_wrapper_class: 'results-item',
+                      input_html: { class: 'results-selector' },
+                      collection: PlayerAction::SHOT_RESULTS %>
         </div>
       </div>
 
@@ -65,16 +76,12 @@
         </div>
       </div>
     </div>
-  </div>
 
-    <%= f.input :result, as: :radio_buttons, collection: PlayerAction::SHOT_RESULTS %>
-
+    <div>
       <%= f.submit 'Valid' %>
-
+    </div>
+  </div>
 <% end %>
-
-
-
 
 
 <%# <style>

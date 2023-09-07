@@ -13,7 +13,3 @@ eagerLoadControllersFrom("controllers", application)
 // Abyme Gem
 import { AbymeController } from 'abyme';
 application.register('abyme', AbymeController);
-
-// Stimulus visibility (form)
-import VisibilityController from "./visibility_controller"
-application.register("visibility", VisibilityController)

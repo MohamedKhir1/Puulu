@@ -33,6 +33,10 @@ player1 = Player.create!({ name: "Clément DUBOIS", nationality: "French", gende
                            birthdate: "1995".to_i, position: "GK", handedness: "Right",
                            available: true, team: team1 })
 
+player2 = Player.create!({ name: "Remi SAUDADIER", nationality: "French", gender: "Male",
+                            birthdate: "1986", position: "Field Player", handedness: "Right-Handed",
+                            available: true, team: team1 })
+
 player3 = Player.create!({ name: "Ugo CROUSILLAT", nationality: "French", gender: "Male",
                            birthdate: "1990", position: "FP", handedness: "Right",
                            available: true, team: team1 })
@@ -78,7 +82,7 @@ player13 = Player.create!({ name: "Hugo FONTANI", nationality: "French", gender:
                             available: true, team: team1 })
 
 puts "seed game"
-current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 10, opponent_result: 7, team: team1)
+current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 0, opponent_result: 0, team: team1)
 
 puts 'seed actions'
 PlayerAction.create!({ kind: "Starting GK", time: "08:00", game: current_game, player: current_game.team.players.sample })
@@ -97,7 +101,7 @@ timings.each do |time|
     time:     time,
     kind:     kind,
     result:   result,
-    position: PlayerAction::POSITION.sample
+    position: PlayerAction::POSITIONS.sample
   )
 end
 
