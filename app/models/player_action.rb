@@ -29,12 +29,13 @@ class PlayerAction < ApplicationRecord
   }
 
   def goal?
-    kind == "goal"
+    result == "GOAL"
   end
 
   private
 
   def set_score
+    reload
     # 1. Je récupère l'instance de game qui est lié au player_action (self)
     action_game = self.game
     # 2. Je crée une condition qui dit : si mon action est un goal, je prends l'équipe à laquelle il appartient
