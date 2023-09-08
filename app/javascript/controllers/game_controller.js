@@ -56,10 +56,6 @@ export default class extends Controller {
       this.resultTargets.forEach(element => {
         element.disabled = false;
       });
-    }else {
-      this.resultTargets.forEach(element => {
-        element.disabled = true;
-      });
     }
   }
 

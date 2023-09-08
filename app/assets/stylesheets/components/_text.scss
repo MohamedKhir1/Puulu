@@ -23,6 +23,7 @@ h2 {
 /* lineup class and keyframes */
 .lineUp {
   animation: 2s anim-lineUp ease-out infinite;
+  animation-iteration-count: 1;
 }
 @keyframes anim-lineUp {
   0% {
@@ -41,7 +42,6 @@ h2 {
     transform: translateY(0%);
   }
 }
-
 
 
 /* subtle zoom to attention and then back */
@@ -79,6 +79,7 @@ h2 {
 
 .fromtop {
   animation: 2s anim-fromtop linear infinite;
+  animation-iteration-count: 1;
 }
 @keyframes anim-fromtop {
   0% { opacity: 0; transform: translateY(-100%);}
