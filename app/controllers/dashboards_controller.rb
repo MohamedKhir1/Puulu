@@ -13,6 +13,7 @@ class DashboardsController < ApplicationController
     @games = Game.where(team_id: @teams.pluck(:id)).group_by(&:date)
 
     @players = @team.players
+    
   end
 
   def result

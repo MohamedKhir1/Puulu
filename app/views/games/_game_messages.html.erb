@@ -17,16 +17,16 @@
 
 <%# Double exclusion %>
 <% if player_action.kind == PlayerAction::TYPE_OF_ACTIONS[9] %>
-  <td><%= "Double exclusion" %></td>
+  <td><%= "Double exclusion - " %></td>
 <% end %>
 
 <%# Exclusion %>
 <% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[4] && player_action.position == 'C2M') %>
-  <td><%= "Centre forward position exclusion" %></td>
+  <td><%= "Centre forward position exclusion - " %></td>
 <% end %>
 
 <% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[4] && player_action.position != 'C2M') %>
-  <td><%= "Field exclusion" %></td>
+  <td><%= "Field exclusion - " %></td>
 <% end %>
 
 <%# Extra player shot %>
@@ -36,12 +36,12 @@
 
 <%# Penalty foul %>
 <% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[7]) %>
-  <td><%= "Penalty foul" %></td>
+  <td><%= "Penalty foul - " %></td>
 <% end %>
 
 <%# Rebound %>
 <% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[5]) %>
-  <td><%= "Rebound" %></td>
+  <td><%= "Rebound - " %></td>
 <% end %>
 
 <%# Shot %>
@@ -55,18 +55,18 @@
 
 <%# Steal %>
 <% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[2] && player_action.position == 'C2M') %>
-  <td><%= "Steal centre forward" %></td>
+  <td><%= "Steal centre forward - " %></td>
 <% end %>
 
 <% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[2] && player_action.position != 'C2M') %>
-  <td><%= "Steal" %></td>
+  <td><%= "Steal - " %></td>
 <% end %>
 
 <%# Turnover foul %>
 <% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[1] && player_action.position == 'C2M') %>
-  <td><%= "Turnover foul centre forward" %></td>
+  <td><%= "Turnover foul centre forward - " %></td>
 <% end %>
 
 <% if (player_action.kind == PlayerAction::TYPE_OF_ACTIONS[1] && player_action.position != 'C2M') %>
-  <td><%= "Turnover foul" %></td>
+  <td><%= "Turnover foul - " %></td>
 <% end %>
