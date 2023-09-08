@@ -9,6 +9,8 @@ class Game < ApplicationRecord
 
   validates :date, :location, presence: true
 
+  attr_accessor :opponent_player
+
   def players
     Player.where(team_id: [team_id, opponent_team_id])
   end

@@ -5,7 +5,7 @@
 <div class="container wrapper login-box">
   <div class="row justify-content-center">
     <h2 class="bg-secondary h4 mb-4 px-3 py-2 fw-bold">
-      Creating a new game
+      Start a new game
     </h2>
 
     <div class="col-5 mb-5">
@@ -36,10 +36,15 @@
                       as: :string %>
 
           <%= f.input :opponent_team,
-                      label: "Opponent's name",
-                      placeholder: "Opponent's name",
+                      label: "Opponent's team name",
+                      placeholder: "Opponent's team name",
                       as: :string,
                       required: true %>
+
+          <%= f.input :opponent_player,
+                        label: "Opponent's player name",
+                      placeholder: "Opponent's player name",
+                      as: :string %>
         </div>
 
         <div class="d-flex form-actions justify-content-center mt-5">

@@ -52,7 +52,7 @@ export default class extends Controller {
     if (evt.target.dataset.gameTarget === "position" &&
         ((this.currentPlayer || this.currentOpponent) &&
         ((this.currentKind === 'SHOT' || this.currentKind === 'COUNTER ATTACK') ||
-        (this.currentKindExtra === 'DIRECT FREE THROW' || this.currentKindExtra === 'EXTRA PLAYER SHOT')))) {
+        (this.currentKind === 'DIRECT FREE THROW' || this.currentKind === 'EXTRA PLAYER SHOT')))) {
       this.resultTargets.forEach(element => {
         element.disabled = false;
       });
