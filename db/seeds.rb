@@ -22,11 +22,9 @@ PlayerAction.destroy_all
 
 puts "Creating users..."
 user1 = User.create!({ email: "test@test.com", password: "123456", name: "Cercle des Nageurs de Marseille" })
-user2 = User.create!({ email: "opponent@test.com", password: "123456", name: "Cercle des Nageurs de Pas France" })
 
 puts "Creating teams..."
 team1 = Team.create!({ name: "Cercle des Nageurs de Marseille", category: "Senior", country: "France", user: user1 })
-team2 = Team.create!({ name: "Équipe de Pas France", category: "Senior", country: "Pas France", user: user2 })
 
 puts "Creating players..."
 player1 = Player.create!({ name: "Clément DUBOIS", nationality: "French", gender: "Male",
@@ -82,7 +80,7 @@ player13 = Player.create!({ name: "Hugo FONTANI", nationality: "French", gender:
                             available: true, team: team1 })
 
 puts "seed game"
-current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 0, opponent_result: 0, team: team1)
+current_game = Game.create!(date: Date.today, tournament: "Tournoi des 6 nations", location: "Paris", round: 1, result: 11, opponent_result: 9, team: team1)
 
 puts 'seed actions'
 PlayerAction.create!({ kind: "Starting GK", time: "08:00", game: current_game, player: current_game.team.players.sample })
@@ -93,7 +91,7 @@ timings = ["7:38", "7:23", "7:23", "6:59", "6:37", "6:21", "6:02", "5:50", "5:36
 
 timings.each do |time|
   kind   = PlayerAction::TYPE_OF_ACTIONS.sample
-  result = PlayerAction::RESULT_PER_KIND[kind].sample if PlayerAction::RESULT_PER_KIND.key?(kind)
+  result = PlayerAction::RESULT_PER_KIND[kind].reject { |action| action == "GOAL" }.sample if PlayerAction::RESULT_PER_KIND.key?(kind)
 
   PlayerAction.create!(
     game:     current_game,
@@ -101,6 +99,28 @@ timings.each do |time|
     time:     time,
     kind:     kind,
     result:   result,
+    position: PlayerAction::POSITIONS.sample
+  )
+end
+
+11.times do
+  PlayerAction.create!(
+    game:     current_game,
+    player:   current_game.team.players.sample,
+    time:     "#{rand(0..7)}:#{rand(0..59)}",
+    kind:     "SHOT",
+    result:   "GOAL",
+    position: PlayerAction::POSITIONS.sample
+  )
+end
+
+9.times do
+  PlayerAction.create!(
+    game:     current_game,
+    player:   current_game.opponent_team.players.sample,
+    time:     "#{rand(0..7)}:#{rand(0..59)}",
+    kind:     "SHOT",
+    result:   "GOAL",
     position: PlayerAction::POSITIONS.sample
   )
 end

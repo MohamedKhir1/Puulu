@@ -4,7 +4,7 @@
 
       <div class="match-fixture__teams col-6">
         <div class="match-fixture__team"><%= game.team.name %></div>
-        <div class="match-fixture__score"> <%= @gol_team %> <div>-</div> <%= @gol_opponent %> </div>
+        <div class="match-fixture__score"> <%= game.scores[:score] %> <div>-</div> <%= game.scores[:opponent_score] %> </div>
         <div class="match-fixture__team"><%= game.opponent_team.name %></div>
       </div>
 

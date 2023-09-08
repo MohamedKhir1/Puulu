@@ -13,6 +13,20 @@ class Game < ApplicationRecord
     Player.where(team_id: [team_id, opponent_team_id])
   end
 
+  def scores
+    score, opponent_score = 0, 0
+    player_actions.each do |action|
+      if action.goal?
+        score += 1 if team == action.team
+        opponent_score += 1 unless team == action.team
+      end
+    end
+    {
+      score: ,
+      opponent_score:
+    }
+  end
+
   private
 
   def set_opponent_team
@@ -30,6 +44,6 @@ class Game < ApplicationRecord
 
   def generate_opponent_team_name
     # "opponent-#{SecureRandom.hex(5)}"
-    ['Olympic Nice Natation', 'Cercle 93', 'Stade de Reims Natation', 'Taverny SN 95', 'Montpellier Water Polo', 'Team Strasbourg'].sample
+    ['Cercle 93'].sample
   end
 end
