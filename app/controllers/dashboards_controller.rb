@@ -10,12 +10,9 @@ class DashboardsController < ApplicationController
     @team = Team.find_by(user_id: current_user)
     # @teams = Team.where(user_id: current_user).order(:name)
 
-    @games = Game.all.group_by(&:date)
+    @games = Game.where(team_id: @teams.pluck(:id)).group_by(&:date)
 
     @players = @team.players
-
-    @gol_team = 11
-    @gol_opponent = 9
   end
 
   def result

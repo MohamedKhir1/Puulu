@@ -26,7 +26,7 @@ class GamesController < ApplicationController
     @opponent_team = @game.opponent_team
     @opponents = @opponent_team.players
 
-    @player_actions = PlayerAction.all
+    @player_actions = @game.player_actions
 
     @team_result = @game.result
     @opponent_result = @game.opponent_result
