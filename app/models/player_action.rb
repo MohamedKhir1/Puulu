@@ -9,8 +9,12 @@ class PlayerAction < ApplicationRecord
 
   TYPE_OF_ACTIONS = ['SHOT', 'TURNOVER FOUL', 'STEAL',
                      'COUNTER ATTACK', 'EXCLUSION', 'REBOUND',
-                     'EXTRA PLAYER SHOT', 'PENALTY FOUL', 'DIRECT FREE THROW',
-                     'DOUBLE EXCLUSION']
+                     'EXTRA PLAYER SHOT', 'PENALTY FOUL', 'DIRECT FREE THROW']
+
+                    #  TYPE_OF_ACTIONS = ['SHOT', 'TURNOVER FOUL', 'STEAL',
+                    #   'COUNTER ATTACK', 'EXCLUSION', 'REBOUND',
+                    #   'EXTRA PLAYER SHOT', 'PENALTY FOUL', 'DIRECT FREE THROW',
+                    #   'DOUBLE EXCLUSION']
 
   POSITIONS = ['L2M', 'C2M', 'R2M', 'BACK LEFT', 'BACK CENTER', 'BACK RIGHT', 'F6M']
 
