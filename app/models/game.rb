@@ -30,7 +30,7 @@ class Game < ApplicationRecord
   private
 
   def set_opponent_team
-    opponent_team = Team.create!(name: generate_opponent_team_name)
+    opponent_team = Team.find_or_create_by(name: generate_opponent_team_name)
 
     13.times do
       # validates :name, :birthdate, :gender, :position, presence: true
@@ -43,7 +43,6 @@ class Game < ApplicationRecord
   end
 
   def generate_opponent_team_name
-    # "opponent-#{SecureRandom.hex(5)}"
-    ['Cercle 93'].sample
+    'Cercle 93'
   end
 end

@@ -9,7 +9,7 @@ class GamesController < ApplicationController
     # Game.create!(date: Date.parse('2023-08-31'), location: "France", team: team)
     @game = Game.new(game_params)
     # redirect_to game_path
-    if @game.save
+    if @game.save!
       redirect_to game_path(@game), notice: 'New Game - launched'
     else
       render :new, status: :unprocessable_entity
