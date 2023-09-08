@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_04_100052) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_08_074737) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_100052) do
     t.string "tournament"
     t.string "location"
     t.string "round"
-    t.integer "result"
+    t.integer "result", default: 0
     t.integer "opponent_result"
     t.bigint "team_id"
     t.bigint "opponent_team_id"

@@ -39,6 +39,7 @@ class GamesController < ApplicationController
     @opponent_team = @game.opponent_team
 
     respond_to do |format|
+      format.html
       format.pdf do
         render pdf: "file_name", template: "shared/actions", encoding: 'UTF-8'
       end
